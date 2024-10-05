@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/05 16:35:12 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/05 16:41:58 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(NAME).o $(O_PARSING)
 %.o:%.c cube3d.h
 	$(CC) -c $(CFLAGS) $< -o $@
 clean:
-	make fclean -C src/libft
+	# make fclean -C src/libft
 	rm -f $(NAME).o
 	rm -fr $(O_PARSING)
 

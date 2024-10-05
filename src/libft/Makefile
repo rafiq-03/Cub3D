@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 11:21:31 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/05 16:32:16 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/05 16:46:26 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c \
 ft_strerr.c\
+gnl/get_next_line.c\
+gnl/get_next_line_utils.c\
 
 OBJ = ${SRC:.c=.o}
 NAME = libft.a

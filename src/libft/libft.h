@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 22:18:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 16:32:49 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/05 16:45:38 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_strerr(char *str);
+
+char	*get_next_line(int fd);
 
 #endif
