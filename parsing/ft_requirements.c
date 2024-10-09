@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 16:19:41 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:44:45 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	check_requirements(int ac, char **av, t_data *data)
 	fill_file_content(data, fd);
 	fill_textures(data);
 	fill_colors(data);
+	// while (1){}
 	// printf("this is me\n");
 	// fill_map(fd, data);
 

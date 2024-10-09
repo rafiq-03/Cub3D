@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 11:21:31 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/05 16:46:26 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/09 13:22:17 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ ft_strlcat.c \
 ft_strlcpy.c \
 ft_strlen.c \
 ft_strmapi.c \
+ft_strcmp.c \
 ft_strncmp.c \
 ft_strnstr.c \
 ft_strrchr.c \
@@ -47,22 +48,33 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c \
 ft_strerr.c\
+ft_iswhitespace.c\
+ft_split_ws.c\
+ft_free.c\
 gnl/get_next_line.c\
 gnl/get_next_line_utils.c\
 
 OBJ = ${SRC:.c=.o}
+
+SBONUS = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c \
+ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
+
+OBONUS = ${SBONUS:.c=.o}
 NAME = libft.a
 
 all: ${NAME}
 
-${NAME}: ${OBJ}
+${NAME}: ${OBJ} ${OBONUS}
 	ar -rcs ${NAME} ${OBJ}
+
+bonus: ${OBONUS}
+	ar rcs ${NAME} ${OBONUS}
 
 %.o:%.c libft.h
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	rm -rf ${OBJ}
+	rm -rf ${OBJ} ${OBONUS}
 
 fclean: clean
 	rm -rf ${NAME}

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 16:30:07 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 17:05:00 by rmarzouk         ###   ########.fr       */
+/*   Created: 2023/12/24 17:40:47 by rmarzouk          #+#    #+#             */
+/*   Updated: 2023/12/29 13:06:14 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strerr(char *str)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(" => : ", 2);
-	ft_putendl_fd(str, 2);
+	t_list	*last;
+
+	last = *lst;
+	if (lst && new)
+	{
+		if (!*lst)
+			*lst = new;
+		else
+		{
+			last = ft_lstlast(*lst);
+			last->next = new;
+		}
+	}
 }

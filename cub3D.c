@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 15:57:10 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:45:00 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 int main(int ac, char **av)
 {
-	if (check_requirements(ac, av))
-		return (1);
+	t_data data;
+
+	check_requirements(ac, av,&data);
 	
-	// mlx_t *mlx;
-	// mlx = mlx_init(1000, 1000, "Cube3D", false);
-	// mlx_loop(mlx);
-	// printf("hello world\n");
 }

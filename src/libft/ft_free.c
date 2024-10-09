@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerr.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 16:30:07 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 17:05:00 by rmarzouk         ###   ########.fr       */
+/*   Created: 2024/10/09 13:19:55 by rmarzouk          #+#    #+#             */
+/*   Updated: 2024/10/09 13:20:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strerr(char *str)
+void	ft_free(char **str)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(" => : ", 2);
-	ft_putendl_fd(str, 2);
+	int i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }

@@ -6,23 +6,11 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 11:51:31 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 16:47:10 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/05 17:33:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 int	find_nl(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 12:08:04 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 12:34:24 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:02:22 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static char	**ft_result(char **res, const char *s, char *ws, size_t words)
 	return (res);
 }
 
-char	**ft_split_ws(const char *s, char *ws)// "\n\t\r\b "
+char	**ft_split_ws(const char *s, char *ws, int *wc)// "\n\t\r\b "
 {
 	char	**res;
 	size_t	words;
@@ -88,6 +88,8 @@ char	**ft_split_ws(const char *s, char *ws)// "\n\t\r\b "
 	if (!s)
 		return (NULL);
 	words = count_words(s, ws);
+	// if (!wc)
+		*wc = words;
 	res = (char **)malloc((words + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);

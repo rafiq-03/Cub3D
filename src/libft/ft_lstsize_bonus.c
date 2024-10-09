@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 16:30:07 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 17:05:00 by rmarzouk         ###   ########.fr       */
+/*   Created: 2023/12/24 13:11:36 by rmarzouk          #+#    #+#             */
+/*   Updated: 2023/12/25 13:48:39 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strerr(char *str)
+int	ft_lstsize(t_list *lst)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(" => : ", 2);
-	ft_putendl_fd(str, 2);
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

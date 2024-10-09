@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 16:30:07 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 17:05:00 by rmarzouk         ###   ########.fr       */
+/*   Created: 2023/12/09 11:08:18 by rmarzouk          #+#    #+#             */
+/*   Updated: 2024/10/05 17:11:50 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strerr(char *str)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(" => : ", 2);
-	ft_putendl_fd(str, 2);
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2) 
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 16:30:07 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/05 17:05:00 by rmarzouk         ###   ########.fr       */
+/*   Created: 2023/12/24 18:59:11 by rmarzouk          #+#    #+#             */
+/*   Updated: 2023/12/30 19:48:55 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strerr(char *str)
+void	ft_lstdelone(t_list *lst, void (*del) (void *))
 {
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(" => : ", 2);
-	ft_putendl_fd(str, 2);
+	if (lst && del)
+		del(lst->content); 
+	free(lst);
 }

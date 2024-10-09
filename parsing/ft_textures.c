@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 16:24:38 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:01:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ void	clean_textures(t_texture *textures)
 
 void	fill_textures(t_data *data)
 {
-	char **split;
 	t_list *tmp;
+	char **split;
 	int		words;
 
-	words = 0;
 	tmp = data->file_content;
 	clean_textures(&data->textures);
 	while (tmp && data->textures.flag < 4)
@@ -65,11 +64,7 @@ void	fill_textures(t_data *data)
 	}
 	if (data->textures.flag != 4)
 	{
-		ft_strerr("A texture is missing");
+		ft_strerr("Textures are not valid");
 		exit(EXIT_FAILURE);	
 	}
-	// printf("SO %s\n", data->textures.SO);
-	// printf("NO %s\n", data->textures.NO);
-	// printf("EA %s\n", data->textures.EA);
-	// printf("WE %s\n", data->textures.WE);
 }
