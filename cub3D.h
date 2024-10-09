@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 15:04:33 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:00:20 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_coor
 	
 }	t_coor;
 
+typedef struct s_map
+{
+	char **map;
+	t_coor	player;
+	
+}	t_map;
 
 typedef	struct s_rgb
 {
@@ -51,14 +57,14 @@ typedef struct s_texture
 	char		*SO;
 	char		*EA;
 	char		*WE;
-	uint16_t	flag;
+	u_int16_t	flag;
 } t_texture;
 
 
 typedef struct s_data
 {
 	t_list		*file_content;
-	char		**map;
+	t_map		map;
 	t_texture	textures;
 	t_color		colors;
 	// t_coor		coor;
@@ -74,11 +80,6 @@ typedef struct s_data
 
 void check_requirements(int ac, char **av, t_data *data);
 
-void	add_texture(char **texture, char *line, u_int16_t *flag);
-void	clean_textures(t_texture *textures);
-void	fill_textures(t_data *data);
-
-void	fill_colors(t_data *data);
 
 /*--[ :: raycasting :: ]--*/
 

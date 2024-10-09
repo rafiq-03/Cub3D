@@ -6,11 +6,11 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 17:04:47 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:01:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "parsing.h"
 
 int	is_number(char *str)
 {
@@ -42,9 +42,12 @@ int	check_color(char *str)
 		
 		nb = ft_atoi(tmp[0]);
 		if (nb >= 0 && nb <= 255)
+		{
+			ft_free(tmp);
 			return (nb);
+		}
 	}
-	free(tmp);
+	ft_free(tmp);
 	return (-1);
 }
 // check_if_they are numbers and store them in an array to put it here      [ ---,---,---  ]
@@ -101,3 +104,4 @@ void	fill_colors(t_data *data)
 }
 	// printf("F == [%d][%d][%d]\n", data->colors.F.r, data->colors.F.g, data->colors.F.b);
 	// printf("C == [%d][%d][%d]\n", data->colors.C.r, data->colors.C.g, data->colors.C.b);
+

@@ -6,16 +6,11 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 17:01:53 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:57:22 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
-
-void	add_texture(char **texture, char *line, u_int16_t *flag);
-void	clean_textures(t_texture *textures);
-void	fill_textures(t_data *data);
-
+#include "parsing.h"
 
 void	add_texture(char **texture, char *line, u_int16_t *flag)
 {
@@ -59,7 +54,7 @@ void	fill_textures(t_data *data)
 			if (!ft_strcmp(split[0], "EA"))
 				add_texture(&data->textures.EA, split[1], &data->textures.flag);
 		}
-		free(split);
+		ft_free(split);
 		tmp = tmp->next;
 	}
 	if (data->textures.flag != 4)

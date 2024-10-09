@@ -6,15 +6,16 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 16:44:45 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/09 17:56:24 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "parsing.h"
 
-void	check_args(int ac, char *str);
-void fill_map(int fd, t_data *data);
-
+void	del(void *content)
+{
+	free(content);
+}
 void	check_args(int ac, char *str)
 {
 	if (ac != 2)
@@ -38,11 +39,13 @@ void	fill_file_content(t_data *data, int fd)
 	i = 0;
 	line = get_next_line(fd);
 	data->file_content = ft_lstnew(line);
-	data->file_content->i = i;
+	data->file_content->i = i++;
 	line = get_next_line(fd);
 	while (line)
 	{
 		tmp = ft_lstnew(line);
+		tmp->i = i++;
+		// printf("%d \n", data->file_content->i);
 		ft_lstadd_back(&data->file_content, tmp);
 		line = get_next_line(fd);
 	}
@@ -65,24 +68,20 @@ void	check_requirements(int ac, char **av, t_data *data)
 	fill_textures(data);
 	fill_colors(data);
 	// while (1){}
-	// printf("this is me\n");
-	// fill_map(fd, data);
-
+	// fill_map(data);
+	ft_lstclear(&data->file_content, &del);
 }
 
-void fill_map(int fd, t_data *data)
-{
-	char	*line;
-	char	*tmp_map;
-	int		i;
 
-	i = 0;
-	tmp_map = ft_strdup("");
-	line = get_next_line(fd);
-	while (line)
+void fill_map(t_data *data)
+{
+	t_list *tmp;
+
+	tmp = data->file_content;
+	while (tmp)
 	{
-		tmp_map = ft_strjoin(tmp_map, line);
-		line = get_next_line(fd);
+		
+		
 	}
-	data->map=ft_split(tmp_map, '\n');	
+		
 }
