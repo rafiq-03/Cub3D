@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:25:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 15:43:21 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:51:38 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 
 void	after_map(t_list *tmp);
+t_list *skip_header(t_list *tmp, int end);
+void	fill_map(t_data *data);
+int	check_all_line(char *line, char *chars);
 
-int	check_all_line(char *line, char *chars, bool *flag)
+int	check_all_line(char *line, char *chars)
 {
 	int	i;
 
@@ -52,7 +55,6 @@ void	fill_map(t_data *data)
 	i = 0;
 	tmp = skip_header(data->file_content, data->header_end);
 	data->map.map = ft_calloc(ft_lstsize(tmp) + 1 , sizeof(char *));
-	// tmp = data->file_content;
 	while (tmp)
 	{
 		if (check_all_line(tmp->content, "NSEW10 "))
@@ -64,13 +66,15 @@ void	fill_map(t_data *data)
 		{
 			after_map(tmp);
 			break;
-		}
-		data->map.map[i++] = tmp->content;	
+		}		
+		data->map.map[i++] = tmp->content;
 		tmp = tmp->next;
 	}
-	i = 0;
-	while (data->map.map[i])
-		printf("%s\n", data->map.map[i++]);
+	if (check_player(data, data->map.map) != 1)
+	{
+		ft_strerr("more than player in map");
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	after_map(t_list *tmp)

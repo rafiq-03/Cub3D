@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 17:01:07 by rmarzouk         ###   ########.fr       */
+/*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
+/*   Updated: 2024/10/11 16:06:16 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parsing.h"
 
-void	ll(void)
+int	check_player(t_data *data, char **map)
 {
-	system("leaks -q cub3D | grep \'leaks for\' | awk \'{print $3 ,$4}\'");
-}
-
-int main(int ac, char **av)
-{
-	t_data data;
-
-	atexit(ll);
-	check_requirements(ac, av,&data);
+	int	x;
+	int	y;
+	int nb;
 	
+	nb = 0;
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (ft_strchr("NSWE", map[x][y]))
+			{
+				data->map.player.x = x;
+				data->map.player.y = y;
+				data->map.derection = map[x][y];
+				nb++;
+			}
+			y++;
+		}
+		x++;		
+	}
+	return (nb);
 }

@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:21:24 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 11:32:24 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:06:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int		check_color(char *str);
 void	add_color(t_data *data, char **r, char **gb);
 void	fill_colors(t_data *data);
 
-int	check_all_line(char *line, char *chars);
-
+void	after_map(t_list *tmp);
+t_list	*skip_header(t_list *tmp, int end);
+void	fill_map(t_data *data);
+int		check_all_line(char *line, char *chars);
+int		check_player(t_data *data, char **map);
 #endif

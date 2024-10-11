@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 15:25:47 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:34:18 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,13 @@ void	check_requirements(int ac, char **av, t_data *data)
 		exit (EXIT_FAILURE);
 	}
 	fill_file_content(data, fd);
-	// t_list	*tmp = data->file_content;
-	// while (tmp)
-	// {
-	// 	printf ("|%s\t\t|\n", tmp->content);
-	// 	tmp = tmp->next;
-	// }
+	if (!ft_lstsize(data->file_content))
+	{
+		ft_strerr("empty file");
+		exit(EXIT_FAILURE);
+	}
 	fill_textures(data);
 	fill_colors(data);
-	// while (1){}
 	fill_map(data);
 	// char **str = data->map.map;
 	// while (*str)

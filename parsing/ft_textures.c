@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 12:35:15 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:00:06 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	add_texture(char **texture, char *line, u_int16_t *flag)
 		ft_strerr("duplicate texture");
 		exit (1);
 	}
-	*texture = ft_strtrim(line, "\n");
+	*texture = line;
 	(*flag)++;
 }
 void	clean_textures(t_texture *textures)

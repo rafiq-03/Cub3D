@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/10 13:16:21 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:05:43 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 {
 	char **map;
 	t_coor	player;
+	char	derection;
 	
 }	t_map;
 
