@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 17:57:22 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:35:15 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,42 @@ void	fill_textures(t_data *data)
 	clean_textures(&data->textures);
 	while (tmp && data->textures.flag < 4)
 	{
-		split = ft_split_ws(tmp->content, " \n", &words);//split content of line by spaces and new line to trim it
-		if (words == 2)
+		if (!ft_strlen(tmp->content))
+		{
+			tmp = tmp->next;
+			continue;
+		}
+		if (!check_all_line(tmp->content, "NSWE10 "))
+		{
+			ft_strerr("this line is a part of map");
+			exit(EXIT_FAILURE);	
+		}
+		split = ft_split_ws(tmp->content, " ", &words);
+		if (words >= 2)
 		{
 			if (!ft_strcmp(split[0], "SO"))
 				add_texture(&data->textures.SO, split[1], &data->textures.flag);
-			if (!ft_strcmp(split[0], "NO"))
+			else if (!ft_strcmp(split[0], "NO"))
 				add_texture(&data->textures.NO, split[1], &data->textures.flag);
-			if (!ft_strcmp(split[0], "WE"))
+			else if (!ft_strcmp(split[0], "WE"))
 				add_texture(&data->textures.WE, split[1], &data->textures.flag);
-			if (!ft_strcmp(split[0], "EA"))
+			else if (!ft_strcmp(split[0], "EA"))
 				add_texture(&data->textures.EA, split[1], &data->textures.flag);
+			else if (ft_strcmp(split[0], "F") && ft_strcmp(split[0], "C"))
+			{
+				ft_strerr("invalid line");
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			ft_strerr("invalid line");
+			exit(EXIT_FAILURE);
 		}
 		ft_free(split);
 		tmp = tmp->next;
 	}
+	data->header_end = tmp->i;
 	if (data->textures.flag != 4)
 	{
 		ft_strerr("Textures are not valid");

@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 18:00:20 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:16:21 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_data
 	t_map		map;
 	t_texture	textures;
 	t_color		colors;
+	int		 	header_end;
 	// t_coor		coor;
 	
 	

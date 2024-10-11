@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 17:56:24 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:25:47 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ void	fill_file_content(t_data *data, int fd)
 	t_list	*tmp;
 
 	i = 0;
-	line = get_next_line(fd);
-	data->file_content = ft_lstnew(line);
-	data->file_content->i = i++;
+	data->file_content = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-		tmp = ft_lstnew(line);
+		tmp = ft_lstnew(ft_strtrim(line, "\n"));
 		tmp->i = i++;
 		// printf("%d \n", data->file_content->i);
 		ft_lstadd_back(&data->file_content, tmp);
+		free(line);
 		line = get_next_line(fd);
 	}
 	// free this fucking data we don't want leaks
@@ -65,23 +64,18 @@ void	check_requirements(int ac, char **av, t_data *data)
 		exit (EXIT_FAILURE);
 	}
 	fill_file_content(data, fd);
+	// t_list	*tmp = data->file_content;
+	// while (tmp)
+	// {
+	// 	printf ("|%s\t\t|\n", tmp->content);
+	// 	tmp = tmp->next;
+	// }
 	fill_textures(data);
 	fill_colors(data);
 	// while (1){}
-	// fill_map(data);
+	fill_map(data);
+	// char **str = data->map.map;
+	// while (*str)
+	// 	printf("%s\n", *str++);
 	ft_lstclear(&data->file_content, &del);
-}
-
-
-void fill_map(t_data *data)
-{
-	t_list *tmp;
-
-	tmp = data->file_content;
-	while (tmp)
-	{
-		
-		
-	}
-		
 }

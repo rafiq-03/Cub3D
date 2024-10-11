@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 18:01:53 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:30:49 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	fill_colors(t_data *data)
 	data->colors.flag = 0;
 	while (tmp)
 	{
+		if (data->colors.flag == 2 && tmp->i > data->header_end)// it's not valid\n
+		{
+			data->header_end = tmp->i;
+			return ;
+		}
 		split_1 = ft_split_ws(tmp->content, ",\n", &words);
 		if (words == 3)
 		{
@@ -93,7 +98,7 @@ void	fill_colors(t_data *data)
 				add_color(data, split_2, split_1);
 			ft_free(split_2);
 		}
-		ft_free(split_1);
+		ft_free(split_1);	
 		tmp = tmp->next;
 	}
 	if (data->colors.flag != 2)

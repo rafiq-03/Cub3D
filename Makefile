@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/09 16:39:48 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/11 12:39:41 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ PARSING_DIR = parsing/
 S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 									ft_textures.c\
 									ft_colors.c\
+									ft_map.c\
 								)
 
 O_PARSING = $(S_PARSING:.c=.o)

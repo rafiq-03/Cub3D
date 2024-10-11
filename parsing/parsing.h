@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:21:24 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/09 17:25:40 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:32:24 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		check_color(char *str);
 void	add_color(t_data *data, char **r, char **gb);
 void	fill_colors(t_data *data);
 
+int	check_all_line(char *line, char *chars);
 
 #endif
