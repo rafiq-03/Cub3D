@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 17:34:18 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:25:36 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,19 @@ void	check_requirements(int ac, char **av, t_data *data)
 	fill_textures(data);
 	fill_colors(data);
 	fill_map(data);
-	// char **str = data->map.map;
-	// while (*str)
-	// 	printf("%s\n", *str++);
+	print_map(data);
+	// printf("[%c]\n", data->map.map[4][data->map.width]);
 	ft_lstclear(&data->file_content, &del);
+}
+
+void	print_map(t_data *data)
+{
+	int i = 0;
+	printf("-----------------------------------------------\n");
+	while (data->map.map[i])
+	{
+		printf("|%s| \n", data->map.map[i]);
+		i++;
+	}
+	printf("-----------------------------------------------\n");
 }

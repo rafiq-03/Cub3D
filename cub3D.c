@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 17:01:07 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:04:19 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char **av)
 {
 	t_data data;
 
-	atexit(ll);
+	// atexit(ll);
 	check_requirements(ac, av,&data);
 	
 }

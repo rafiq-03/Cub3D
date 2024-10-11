@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 16:05:43 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:17:15 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ typedef struct s_coor
 
 typedef struct s_map
 {
-	char **map;
+	char	**map;
+	int		width;
+	int		higth;
 	t_coor	player;
 	char	derection;
 	

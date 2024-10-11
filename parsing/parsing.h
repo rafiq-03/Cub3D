@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:21:24 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 16:06:03 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:57:58 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ t_list	*skip_header(t_list *tmp, int end);
 void	fill_map(t_data *data);
 int		check_all_line(char *line, char *chars);
 int		check_player(t_data *data, char **map);
+
+void	check_edges(char **map, int hight, int width);
+void	check_all_map(char **map, int hight, int width);
+
+// testing 
+void	print_map(t_data *data);
+
 #endif
