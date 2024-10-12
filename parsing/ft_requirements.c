@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 18:25:36 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:56:06 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,16 @@ void	check_requirements(int ac, char **av, t_data *data)
 	print_map(data);
 	// printf("[%c]\n", data->map.map[4][data->map.width]);
 	ft_lstclear(&data->file_content, &del);
+	// while (1);
 }
 
 void	print_map(t_data *data)
 {
 	int i = 0;
 	printf("-----------------------------------------------\n");
-	while (data->map.map[i])
+	while (data->map.grid[i])
 	{
-		printf("|%s| \n", data->map.map[i]);
+		printf("|%s| \n", data->map.grid[i]);
 		i++;
 	}
 	printf("-----------------------------------------------\n");

@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 19:04:33 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 15:31:46 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	check_player(t_data *data, char **map)
 		{
 			if (ft_strchr("NSWE", map[x][y]))
 			{
-				data->map.player.x = x;
-				data->map.player.y = y;
-				data->map.derection = map[x][y];
+				data->player.pos.x = x;
+				data->player.pos.y = y;
+				data->player.direction = map[x][y];
 				nb++;
 			}
 			y++;
@@ -38,19 +38,34 @@ int	check_player(t_data *data, char **map)
 	}
 	return (nb);
 }
-void	check_edges(char **map, int hight, int width)
+int	check_line(char *line, char *chars)
+{
+	int	i = 0;
+	while (chars[i])
+	{
+		if (ft_strchr(line, chars[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	check_edges(char **map, int height, int width)
 {
 	int	i;
 
 	i = 0;
-	if (ft_strchr(map[0], '0') || ft_strchr(map[hight - 1], '0'))
+	// if (check_line(map[0], '0') || ft_strchr(map[hight - 1], '0'))
+	if (check_line(map[0], "NSWE0") || check_line(map[height - 1], "NSWE0"))
 	{
 		ft_strerr("0 in edges");
 		exit(EXIT_FAILURE);
 	}
-	while (i < hight)
+	// printf("hereeee\n\n\n\n\n");
+	while (i < height)
 	{
-		if (map[i][0] == '0' || map[i][width - 1] == '0')
+		// if (map[i][0] == '0' || map[i][width - 1] == '0')
+		if (ft_strchr("NSWE0", map[i][0]) || ft_strchr("NSWE0", map[i][width - 1]))
 		{
 			ft_strerr("0 in edges");
 			exit(EXIT_FAILURE);

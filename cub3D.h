@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 18:17:15 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:47:57 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,16 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include "src/libft/libft.h"
 
+
+#define BOX  32
+
 /*------------------------[ structs ]----------------------------------*/
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
 
 typedef struct s_coor
 {
@@ -30,14 +39,21 @@ typedef struct s_coor
 	
 }	t_coor;
 
+typedef struct s_player
+{
+	t_coor		coor;// coordinates of player with pixels
+	t_pos		pos;// wher the player  existe depend of its coordinates// by position of the player in map
+	mlx_image_t *img;// img of player
+	char		direction;// the first derection that player show it
+	
+}	t_player;
+
 typedef struct s_map
 {
-	char	**map;
-	int		width;
-	int		higth;
-	t_coor	player;
-	char	derection;
-	
+	char	**grid;
+	int		width; // width of map
+	int		heigth;// height of map
+	mlx_image_t *img;// image of map
 }	t_map;
 
 typedef	struct s_rgb
@@ -66,13 +82,15 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	t_list		*file_content;
-	t_map		map;
-	t_texture	textures;
-	t_color		colors;
-	int		 	header_end;
-	// t_coor		coor;
-	
+	t_list		*file_content;// content from map's file
+	t_map		map;// struct of infos of map
+	t_texture	textures;// textures from file
+	t_color		colors;// colors from file
+	int		 	header_end; // when I finish to extract colors and colors i pust this flag to it
+	t_player	player; // player information
+	mlx_t		*mlx;// mlx variable
+	mlx_image_t	*mm_backroud;// if we need background
+	mlx_key_data_t keys; // key hooks
 	
 }	t_data;
 

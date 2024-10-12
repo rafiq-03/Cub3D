@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 17:00:06 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:59:07 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	add_texture(char **texture, char *line, u_int16_t *flag)
 	if (*texture)
 	{
 		ft_strerr("duplicate texture");
-		exit (1);
+		exit (EXIT_FAILURE);
 	}
-	*texture = line;
+	*texture = ft_strdup(line);
 	(*flag)++;
 }
 void	clean_textures(t_texture *textures)
@@ -42,6 +42,7 @@ void	fill_textures(t_data *data)
 	clean_textures(&data->textures);
 	while (tmp && data->textures.flag < 4)
 	{
+		// printf("%s\n", data->textures.EA);
 		if (!ft_strlen(tmp->content))
 		{
 			tmp = tmp->next;
@@ -83,4 +84,8 @@ void	fill_textures(t_data *data)
 		ft_strerr("Textures are not valid");
 		exit(EXIT_FAILURE);	
 	}
+	// printf("%s\n", data->textures.EA);
+	// printf("%s\n", data->textures.SO);
+	// printf("%s\n", data->textures.WE);
+	// printf("%s\n", data->textures.NO);
 }

@@ -13,6 +13,7 @@ NC='\033[0m' # No Color
 
 
 declare -a maps=(color_invalid_rgb.cub \
+my.cub \
 color_missing.cub \
 color_missing_ceiling_rgb.cub \
 color_missing_floor_rgb.cub \
@@ -50,5 +51,12 @@ do
 	echo " ------------------------------------" >&2
 	echo "" >&2
 	$cub $path$map
+	if [ $? -eq 0 ]
+	then
+	echo "------------------------------------" >> failed
+		echo "$path$map" >> failed
+		# cat  "$path$map" >> failed
+	echo "------------------------------------" >> failed
+	fi
 	echo "">&2
 done

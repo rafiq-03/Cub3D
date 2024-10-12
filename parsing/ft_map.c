@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:25:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 18:58:34 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:49:51 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	ft_max_len(t_list *tmp)
 	int	max;
 	int	len;
 
-	max = ft_strlen(tmp->content);
+	if (tmp)
+		max = ft_strlen(tmp->content);
 	while (tmp)
 	{
 		len = ft_strlen(tmp->content);
@@ -56,6 +57,21 @@ int	ft_max_len(t_list *tmp)
 	}
 	return (max);
 }
+int	get_height(t_list *tmp)
+{
+	int i;
+
+	i = 0;
+	while (tmp)
+	{
+		if (!ft_strlen(tmp->content))
+			return (i);
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
 void	fill_map(t_data *data)
 {
 	t_list *tmp;
@@ -63,10 +79,15 @@ void	fill_map(t_data *data)
 
 	i = 0;
 	tmp = skip_header(data->file_content, data->header_end);
-	data->map.higth = ft_lstsize(tmp);
+	data->map.heigth = get_height(tmp);
+	if (!data->map.heigth)
+	{
+		ft_strerr("ther is not map in this file or map in the middle");
+		exit(EXIT_FAILURE);
+	}
 	data->map.width = ft_max_len(tmp);
-	data->map.map = ft_calloc(data->map.higth + 1 , sizeof(char *));
-	if (!data->map.map)
+	data->map.grid = ft_calloc(data->map.heigth + 1 , sizeof(char *));
+	if (!data->map.grid)
 		return;
 	while (tmp)
 	{
@@ -80,20 +101,20 @@ void	fill_map(t_data *data)
 			after_map(tmp);
 			break;
 		}
-		data->map.map[i] = ft_calloc(data->map.width + 1 , sizeof(char));
-		if (!data->map.map[i])
+		data->map.grid[i] = ft_calloc(data->map.width + 1 , sizeof(char));
+		if (!data->map.grid[i])
 			return;
-		ft_memset(data->map.map[i], ' ', data->map.width);
-		ft_memcpy(data->map.map[i++], tmp->content, ft_strlen(tmp->content));
+		ft_memset(data->map.grid[i], ' ', data->map.width);
+		ft_memcpy(data->map.grid[i++], tmp->content, ft_strlen(tmp->content));
 		tmp = tmp->next;
 	}
-	if (check_player(data, data->map.map) != 1)
+	if (check_player(data, data->map.grid) != 1)
 	{
-		ft_strerr("more than player in map");
+		ft_strerr("more or less than player in map");
 		exit(EXIT_FAILURE);
 	}
-	check_edges(data->map.map, data->map.higth, data->map.width);
-	check_all_map(data->map.map, data->map.higth, data->map.width);
+	check_edges(data->map.grid, data->map.heigth, data->map.width);
+	check_all_map(data->map.grid, data->map.heigth, data->map.width);
 }
 
 void	after_map(t_list *tmp)
