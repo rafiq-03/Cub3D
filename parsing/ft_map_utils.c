@@ -6,11 +6,34 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/12 15:31:46 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:27:19 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+t_coor set_pov(t_coor coor, char c)
+{
+	t_coor pov;
+
+	if (c == 'N' || c == 'S')
+	{
+		pov.x = coor.x;
+		if (c == 'N')
+			pov.y = coor.y + 1;
+		if (c == 'S')
+			pov.y = coor.y - 1;
+	}
+	else
+	{
+		pov.y = coor.y;
+		if (c == 'E')
+			pov.x = coor.x + 1;
+		if (c == 'W')
+			pov.x = coor.x - 1;
+	}
+	return (pov);
+}
 
 int	check_player(t_data *data, char **map)
 {
@@ -19,22 +42,23 @@ int	check_player(t_data *data, char **map)
 	int nb;
 	
 	nb = 0;
-	x = 0;
-	while (map[x])
+	y = 0;
+	while (map[y])
 	{
-		y = 0;
-		while (map[x][y])
+		x = 0;
+		while (map[y][x])
 		{
-			if (ft_strchr("NSWE", map[x][y]))
+			if (ft_strchr("NSWE", map[y][x]))
 			{
-				data->player.pos.x = x;
-				data->player.pos.y = y;
-				data->player.direction = map[x][y];
+				data->player.coor.x = x + 0.40;// put the player in the center of box
+				data->player.coor.y = y + 0.40;
+				data->player.direction = map[y][x];
+				data->player.pov = set_pov(data->player.coor, map[y][x]);
 				nb++;
 			}
-			y++;
+			x++;
 		}
-		x++;		
+		y++;		
 	}
 	return (nb);
 }
@@ -75,7 +99,7 @@ void	check_edges(char **map, int height, int width)
 }
 void	check_around(char **map, int x, int y)
 {
-	if (map[x - 1][y] == ' ' || map[x - 1][y] == ' ' || map[x - 1][y + 1] == ' ' || map[x][y - 1] == ' ' || map[x][y + 1] == ' ' || map[x + 1][y - 1] == ' ' || map[x + 1][y] == ' ' || map[x + 1][y + 1] == ' ')
+	if (map[y - 1][x] == ' ' || map[y - 1][x] == ' ' || map[y - 1][x + 1] == ' ' || map[y][x - 1] == ' ' || map[y][x + 1] == ' ' || map[y + 1][x - 1] == ' ' || map[y + 1][x] == ' ' || map[y + 1][x + 1] == ' ')
 	{
 		ft_strerr("map is not surrounded by walls");
 		exit(EXIT_FAILURE);
@@ -87,17 +111,17 @@ void	check_all_map(char **map, int hight, int width)
 	int	x;
 	int	y;
 
-	x = 1;
-	while (x < hight - 1)
+	y = 1;
+	while (y < hight - 1)
 	{
-		y = 1;
-		while (y < width - 1)
+		x = 1;
+		while (x < width - 1)
 		{
-			if (map[x][y] == '0' || ft_strchr("NSWE", map[x][y]))
+			if (map[y][x] == '0' || ft_strchr("NSWE", map[y][x]))
 				check_around(map, x, y);
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	
 }

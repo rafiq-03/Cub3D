@@ -44,6 +44,7 @@ wall_hole_south.cub \
 wall_hole_west.cub \
 wall_none.cub )
 
+rm failed
 for map in "${maps[@]}"
 do
 	echo " ------------------------------------" >&2

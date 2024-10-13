@@ -23,7 +23,6 @@ sad_face.cub \
 square_map.cub \
 subject_map.cub \
 test_map.cub \
-test_map_hole.cub \
 test_pos_bottom.cub \
 test_pos_left.cub \
 test_pos_right.cub \
@@ -32,7 +31,7 @@ test_textures.cub \
 test_whitespace.cub \
 works.cub \
  )
-
+rm failed
 for map in "${maps[@]}"
 do
 	echo " ------------------------------------" >&2

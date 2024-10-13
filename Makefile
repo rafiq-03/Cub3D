@@ -6,12 +6,13 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/12 13:14:36 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/13 14:52:59 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+# CFLAGS = -Wall -Wextra -Werror
 MLX_FALGS=MLX42/build/libmlx42.a MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L src/libft -lft
@@ -28,18 +29,26 @@ S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 
 O_PARSING = $(S_PARSING:.c=.o)
 
+RAYCASTING_DIR = raycasting/
+S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), mini_map.c\
+											ft_init_mlx.c\
+											render_map.c \
+								)
+
+O_RAYCASTING = $(S_RAYCASTING:.c=.o)
+
 all: $(NAME)
 
-$(NAME): $(NAME).o $(O_PARSING)
+$(NAME): $(NAME).o $(O_PARSING) $(O_RAYCASTING)
 	make -C src/libft
-	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) $(NAME).o $(O_PARSING) -o $(NAME)
+	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) $(NAME).o $(O_RAYCASTING) $(O_PARSING) -o $(NAME)
 
 %.o:%.c cube3d.h
 	$(CC) -c $(CFLAGS) $< -o $@
 clean:
 	# make fclean -C src/libft
-	rm -f $(NAME).o
-	rm -fr $(O_PARSING)
+	rm -f $(NAME).o 
+	rm -fr $(O_PARSING) $(O_RAYCASTING)
 
 fclean: clean
 	rm -f $(NAME)

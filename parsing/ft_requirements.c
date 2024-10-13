@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/12 14:56:06 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:37:48 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,12 @@ void	fill_file_content(t_data *data, int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		tmp = ft_lstnew(ft_strtrim(line, "\n"));
+		tmp = ft_lstnew(ft_strtrim(line, "\n\t"));
 		tmp->i = i++;
-		// printf("%d \n", data->file_content->i);
 		ft_lstadd_back(&data->file_content, tmp);
 		free(line);
 		line = get_next_line(fd);
 	}
-	// free this fucking data we don't want leaks
 	close(fd);
 }
 
@@ -72,10 +70,7 @@ void	check_requirements(int ac, char **av, t_data *data)
 	fill_textures(data);
 	fill_colors(data);
 	fill_map(data);
-	print_map(data);
-	// printf("[%c]\n", data->map.map[4][data->map.width]);
 	ft_lstclear(&data->file_content, &del);
-	// while (1);
 }
 
 void	print_map(t_data *data)
