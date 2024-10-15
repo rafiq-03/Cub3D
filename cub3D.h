@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/13 18:04:23 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/15 10:19:36 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@
 
 
 #define BOX  32
-#define BOXE  64
-#define RADIAN 3.14 / 180
+#define BOXE  32
+#define	PI 3.14159265359
+#define RAD PI / 180 // one radian
+#define DEGREE 0.174533
+#define	SPEED 5
 
 /*------------------------[ structs ]----------------------------------*/
 
@@ -39,10 +42,7 @@ typedef struct s_coor
 typedef struct s_player
 {
 	t_coor		coor;// coordinates of player with pixels
-	mlx_image_t *img;// img of player
-	int			angle;//
-	char		direction;// the first derection that player show it
-	t_coor		pov;
+	double		angle;// angle of player 
 	
 }	t_player;
 
@@ -77,6 +77,12 @@ typedef struct s_texture
 	u_int16_t	flag;
 } t_texture;
 
+typedef	struct s_ray
+{
+	t_coor		hit_point;
+	u_int32_t	distance;
+	
+}	t_ray;
 
 typedef struct s_data
 {
@@ -90,6 +96,7 @@ typedef struct s_data
 	mlx_image_t	*ft_3D;// image of 3d vue
 	mlx_key_data_t keys; // key hooks
 	
+	
 }	t_data;
 
 
@@ -100,9 +107,10 @@ typedef struct s_data
 
 void	check_requirements(int ac, char **av, t_data *data);
 void	mini_map(t_data *data);
-
+void	my_mlx_put_pixel(t_data *data, t_coor coor, u_int32_t color);
 
 /*--[ :: raycasting :: ]--*/
 
+void	ft_loop(void *dataa);// loop hook
 
 #endif

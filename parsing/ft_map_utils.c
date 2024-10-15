@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/13 17:27:19 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:25:05 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ t_coor set_pov(t_coor coor, char c)
 	return (pov);
 }
 
+void	set_angle(t_player *player, char c)
+{
+	if (c == 'N')
+		player->angle = 4.71239;
+	if (c == 'S')
+		player->angle = 1.5708;
+	if (c == 'E')
+		player->angle = 0.0;
+	if (c == 'W')
+		player->angle = M_PI;
+}
+
+
 int	check_player(t_data *data, char **map)
 {
 	int	x;
@@ -50,10 +63,9 @@ int	check_player(t_data *data, char **map)
 		{
 			if (ft_strchr("NSWE", map[y][x]))
 			{
-				data->player.coor.x = x + 0.40;// put the player in the center of box
-				data->player.coor.y = y + 0.40;
-				data->player.direction = map[y][x];
-				data->player.pov = set_pov(data->player.coor, map[y][x]);
+				data->player.coor.x = x * BOX + BOX / 2;// put the player in the center of box
+				data->player.coor.y = y * BOX + BOX / 2;
+				set_angle(&data->player, map[y][x]);
 				nb++;
 			}
 			x++;

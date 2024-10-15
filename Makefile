@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/13 14:52:59 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/15 10:23:59 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 O_PARSING = $(S_PARSING:.c=.o)
 
 RAYCASTING_DIR = raycasting/
-S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), mini_map.c\
-											ft_init_mlx.c\
+S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), ft_init_mlx.c\
 											render_map.c \
+											ft_hooks.c \
+											ft_dda.c \
+											ft_player.c \
 								)
 
 O_RAYCASTING = $(S_RAYCASTING:.c=.o)
