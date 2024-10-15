@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/14 12:25:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:40:19 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	check_player(t_data *data, char **map)
 		{
 			if (ft_strchr("NSWE", map[y][x]))
 			{
-				data->player.coor.x = x * BOX + BOX / 2;// put the player in the center of box
-				data->player.coor.y = y * BOX + BOX / 2;
+				data->player.coor.x = x * TILE_SIZE + TILE_SIZE / 2;// put the player in the center of box
+				data->player.coor.y = y * TILE_SIZE + TILE_SIZE / 2;
 				set_angle(&data->player, map[y][x]);
 				nb++;
 			}
@@ -111,7 +111,10 @@ void	check_edges(char **map, int height, int width)
 }
 void	check_around(char **map, int x, int y)
 {
-	if (map[y - 1][x] == ' ' || map[y - 1][x] == ' ' || map[y - 1][x + 1] == ' ' || map[y][x - 1] == ' ' || map[y][x + 1] == ' ' || map[y + 1][x - 1] == ' ' || map[y + 1][x] == ' ' || map[y + 1][x + 1] == ' ')
+	if (map[y - 1][x] == ' ' || map[y - 1][x] == ' ' 
+	|| map[y - 1][x + 1] == ' ' || map[y][x - 1] == ' ' 
+	|| map[y][x + 1] == ' ' || map[y + 1][x - 1] == ' ' 
+	|| map[y + 1][x] == ' ' || map[y + 1][x + 1] == ' ')
 	{
 		ft_strerr("map is not surrounded by walls");
 		exit(EXIT_FAILURE);

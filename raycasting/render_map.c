@@ -6,14 +6,11 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 10:18:41 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:44:29 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-int get_rgba(int r, int g, int b, int a);
-void	draw_player(t_data *data, t_coor coor);
 
 /*
 	algorithm of raycasting 
@@ -41,16 +38,16 @@ void	draw_player(t_data *data, t_coor coor);
 	}
 			
 */
-void	draw_box(t_data *data, int	x, int y, char c)
+void	draw_tile(t_data *data, int	x, int y, char c)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < BOX - 1)
+	while (i < TILE_SIZE - 1)
 	{
 		j = 0;
-		while (j < BOX - 1)
+		while (j < TILE_SIZE - 1)
 		{
 			if (c == '1')
 				mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(0, 0, 0, 255));
@@ -73,7 +70,7 @@ void	mini_map(t_data *data)
 		x = 0;
 		while (data->map.grid[y][x])
 		{
-			draw_box(data, x * BOX, y * BOX, data->map.grid[y][x]);
+			draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, data->map.grid[y][x]);
 			x++;
 		}
 		y++;	

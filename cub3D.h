@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 10:19:36 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:37:45 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,20 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include "src/libft/libft.h"
 
+#define TILE_SIZE  32
+#define BOXE  70
 
-#define BOX  32
-#define BOXE  32
-#define	PI 3.14159265359
-#define RAD PI / 180 // one radian
-#define DEGREE 0.174533
+#define DEGREE_90 1.5708
+#define DEGREE_60 1.0472
+
+
+#define RAD M_PI / 180 // one radian
+#define DEGREE 0.0872665
 #define	SPEED 5
+
+#define N_RAYS 10
+#define FOV DEGREE_60
+
 
 /*------------------------[ structs ]----------------------------------*/
 

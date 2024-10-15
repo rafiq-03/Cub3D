@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 10:21:18 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:44:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	my_mlx_put_pixel(t_data *data, t_coor coor, u_int32_t color)
 {
-	if (coor.x >= 0 && coor.x < data->map.width * BOX && coor.y >= 0 && coor.y < data->map.heigth * BOX)
+	if (coor.x >= 0 && coor.x < data->map.width * TILE_SIZE && coor.y >= 0 && coor.y < data->map.heigth * TILE_SIZE)
 	{
 		mlx_put_pixel(data->map.img, (int) coor.x,(int) coor.y, color);
 	}
@@ -45,7 +45,7 @@ void	init_mlx_elements(t_data *data)
 	// 	ft_strerr("3d vue's image error");
 	// 	exit(EXIT_FAILURE);
 	// }
-	data->map.img = mlx_new_image(data->mlx, data->map.width * BOX, data->map.width * BOX);
+	data->map.img = mlx_new_image(data->mlx, data->map.width * TILE_SIZE, data->map.width * TILE_SIZE);
 	if (!data->map.img)
 	{
 		ft_strerr("map's img error");
