@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 17:44:29 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:39:53 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	draw_tile(t_data *data, int	x, int y, char c)
 	int	j;
 
 	i = 0;
-	while (i < TILE_SIZE - 1)
+	while (i < TILE_SIZE)
 	{
 		j = 0;
-		while (j < TILE_SIZE - 1)
+		while (j < TILE_SIZE)
 		{
 			if (c == '1')
 				mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(0, 0, 0, 255));

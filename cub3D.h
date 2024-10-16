@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 17:37:45 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:48:22 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,24 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include "src/libft/libft.h"
 
-#define TILE_SIZE  32
-#define BOXE  70
+#define TILE_SIZE  48
 
 #define DEGREE_90 1.5708
 #define DEGREE_60 1.0472
 
+#define WIDTH 1600
+#define HEIGHT 1000
 
 #define RAD M_PI / 180 // one radian
-#define DEGREE 0.0872665
-#define	SPEED 5
+#define DEGREE 0.0349066// 2 degree
+#define	SPEED 10
+// #define RES 
 
-#define N_RAYS 10
-#define FOV DEGREE_60
+#define N_RAYS 100
+
+#define FOV DEGREE_90
+
+#define RAY_ANGLE_INC FOV / N_RAYS
 
 
 /*------------------------[ structs ]----------------------------------*/
@@ -49,7 +54,9 @@ typedef struct s_coor
 typedef struct s_player
 {
 	t_coor		coor;// coordinates of player with pixels
-	double		angle;// angle of player 
+	double		angle;// angle of player
+	double		rotate_speed; 
+	double		move_speed; 
 	
 }	t_player;
 
@@ -86,7 +93,7 @@ typedef struct s_texture
 
 typedef	struct s_ray
 {
-	t_coor		hit_point;
+	t_coor		Wall_hit;
 	u_int32_t	distance;
 	
 }	t_ray;
@@ -101,7 +108,7 @@ typedef struct s_data
 	t_player	player; // player information
 	mlx_t		*mlx;// mlx variable
 	mlx_image_t	*ft_3D;// image of 3d vue
-	mlx_key_data_t keys; // key hooks
+	t_ray		*rays;
 	
 	
 }	t_data;
@@ -114,7 +121,7 @@ typedef struct s_data
 
 void	check_requirements(int ac, char **av, t_data *data);
 void	mini_map(t_data *data);
-void	my_mlx_put_pixel(t_data *data, t_coor coor, u_int32_t color);
+void	my_mlx_put_pixel(t_data *data, mlx_image_t *img, t_coor coor, u_int32_t color);
 
 /*--[ :: raycasting :: ]--*/
 
