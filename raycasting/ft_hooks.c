@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/16 15:27:42 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:37:49 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,43 +34,42 @@ void	keyhooks(mlx_key_data_t	keydata, void *dataa)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 	{
 		data->player.angle = ft_normalizer(data->player.angle + DEGREE);
-		printf("angle = %f\n", data->player.angle);
+		// printf("angle = %f\n", data->player.angle);
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 	{
 		data->player.angle = ft_normalizer(data->player.angle - DEGREE);
-		printf("angle = %f\n", data->player.angle);
+		// printf("angle = %f\n", data->player.angle);
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 	{
 
 		
 		next.x = data->player.coor.x + cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y + sin(data->player.angle) * SPEED ;
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 	{
 		next.x = data->player.coor.x - cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y - sin(data->player.angle) * SPEED ;
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 	{
 		next.x = data->player.coor.x + cos(data->player.angle - DEGREE_90) * SPEED ;
 		next.y = data->player.coor.y +  sin(data->player.angle - DEGREE_90) * SPEED ;
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 	{
 		next.x = data->player.coor.x + cos(data->player.angle + DEGREE_90) * SPEED ;
 		next.y = data->player.coor.y + sin(data->player.angle + DEGREE_90) * SPEED ;
 	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 	{
 		printf("exit\n");
 		exit(EXIT_SUCCESS);
 	}
 	if (!collision_detected(data->map, next))
 		data->player.coor = next;
-	mini_map(data);
 }
 // printf("x = %f, y = %f\n", data->player.coor.x, data->player.coor.y);
 
@@ -80,5 +79,6 @@ void	ft_loop(void *dataa)
 
 	data = (t_data *) dataa;
 	mini_map(data);
+	mini_(data);
 	mlx_key_hook(data->mlx, keyhooks, data);
 }

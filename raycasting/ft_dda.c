@@ -6,13 +6,13 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/16 15:50:17 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:30:36 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	dda(t_data *data, t_coor a, t_coor b, int color)
+void	dda(t_data *data, t_coor a, t_coor b, int color, mlx_image_t *img)
 {
 	int step;
 	double dx;
@@ -32,7 +32,7 @@ void	dda(t_data *data, t_coor a, t_coor b, int color)
 	int i = 0;
 	while (i <= step)
 	{
-		my_mlx_put_pixel(data, data->map.img,(t_coor){a.x , a.y}, color);
+		my_mlx_put_pixel(data, img,(t_coor){a.x , a.y}, color);
 		a.x += xinc;
 		a.y += yinc;
 		i++;
@@ -47,7 +47,7 @@ t_coor	first_h_inter(double angle, t_coor player)
 		first_h.y = floor(player.y / TILE_SIZE) * TILE_SIZE + TILE_SIZE;
 
 	else if (angle > M_PI && angle < 2 * M_PI) // up
-		first_h.y = floor(player.y / TILE_SIZE) * TILE_SIZE - 1;
+		first_h.y = floor(player.y / TILE_SIZE) * TILE_SIZE - 0.001;
 
 	first_h.x = (first_h.y - player.y) / tan(angle) + player.x;
 
@@ -59,7 +59,7 @@ t_coor	first_v_inter(double angle, t_coor player)
 	t_coor first_v;
 
 	if (angle >= M_PI / 2 && angle <= 1.5 * M_PI)//left
-		first_v.x = (int)(player.x / TILE_SIZE) * TILE_SIZE - 1;
+		first_v.x = (int)(player.x / TILE_SIZE) * TILE_SIZE - 0.001;
 	else if (angle >= 1.5 * M_PI || angle <= M_PI / 2)// right
 		first_v.x = (int)(player.x / TILE_SIZE) * TILE_SIZE + TILE_SIZE;
 	
@@ -132,7 +132,7 @@ t_coor v_wall_detect(t_map map, t_coor first, double angle)
 	return (hit);
 }
 
-t_coor	ft_compare(t_coor player, t_coor h, t_coor v)
+t_coor	ft_compare(t_coor player, t_coor h, t_coor v, t_ray *ray)
 {
 	double PH;
 	double PV;
@@ -140,11 +140,16 @@ t_coor	ft_compare(t_coor player, t_coor h, t_coor v)
 	PH = sqrt(pow(h.y - player.y, 2)+ pow(h.x - player.x, 2));
 	PV = sqrt(pow(v.y - player.y, 2)+ pow(v.x - player.x, 2));
 
-	// printf("virtical %3.f horizontal %3.f\n", PV , PH);
 	if (PV <= PH)
+	{
+		ray->distance = PV;
 		return (v);
+	}
 	else
+	{		
+		ray->distance = PH;
 		return (h);
+	}
 }
 
 
@@ -167,13 +172,14 @@ void	ft_dda(t_data *data)
 		t_coor hit_v = v_wall_detect(data->map, first_v, angle);
 		// t_coor small_d = ft_compare(data->player.coor, hit_h, hit_v);
 		
-		data->rays[i].Wall_hit = ft_compare(data->player.coor, hit_h, hit_v);
-		dda(data, data->player.coor, data->rays[i].Wall_hit, get_rgba(10, 100, 10, 255));
-		
+		data->rays[i].Wall_hit = ft_compare(data->player.coor, hit_h, hit_v, &(data->rays[i]));
+		dda(data, data->player.coor, data->rays[i].Wall_hit, get_rgba(10, 100, 10, 255), data->map.img);
+		// printf("distance = %f\n", data->rays[i].distance);
 		angle += RAY_ANGLE_INC;
 		i++;
 	}
-	dda(data, data->player.coor, (t_coor){data->player.coor.x + cos(data->player.angle) * 50, data->player.coor.y + sin(data->player.angle) * 50}, get_rgba(255, 10, 0, 255));
+	dda(data, data->player.coor, (t_coor){data->player.coor.x + cos(data->player.angle) * 50,
+		data->player.coor.y + sin(data->player.angle) * 50}, get_rgba(255, 10, 0, 255), data->map.img);
 	
 
 

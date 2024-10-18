@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/16 15:34:39 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:56:49 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_mlx_elements(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
-	mlx_image_to_window(data->mlx, data->map.img, 0 , 0);
+	mlx_image_to_window(data->mlx, data->map.img, 400 , 400);
 	int i = 0;
 	int j = 0;
 	while (i < HEIGHT)
@@ -60,9 +60,9 @@ void	init_mlx_elements(t_data *data)
 		j = 0;
 		while (j < WIDTH)
 		{
-			// if (i < HEIGHT / 2)
-			// 	mlx_put_pixel(data->ft_3D, j, i, get_rgba(162, 210, 223, 255));
-			// else		
+			if (i < HEIGHT / 2)
+				mlx_put_pixel(data->ft_3D, j, i, get_rgba(196, 215, 255, 255));
+			else		
 				mlx_put_pixel(data->ft_3D, j, i, get_rgba(73, 54, 40 , 255));
 			j++;
 		}

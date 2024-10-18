@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/16 15:48:22 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:23:47 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include "src/libft/libft.h"
 
-#define TILE_SIZE  48
+#define TILE_SIZE  32
+#define TILE  16
 
 #define DEGREE_90 1.5708
 #define DEGREE_60 1.0472
@@ -31,13 +32,13 @@
 #define HEIGHT 1000
 
 #define RAD M_PI / 180 // one radian
-#define DEGREE 0.0349066// 2 degree
+#define DEGREE 5 * M_PI / 180
 #define	SPEED 10
 // #define RES 
 
-#define N_RAYS 100
+#define N_RAYS 10
 
-#define FOV DEGREE_90
+#define FOV DEGREE_60
 
 #define RAY_ANGLE_INC FOV / N_RAYS
 
@@ -94,7 +95,7 @@ typedef struct s_texture
 typedef	struct s_ray
 {
 	t_coor		Wall_hit;
-	u_int32_t	distance;
+	double		distance;
 	
 }	t_ray;
 

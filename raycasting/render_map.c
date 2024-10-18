@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/16 15:39:53 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:54:39 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 	}
 			
 */
-void	draw_tile(t_data *data, int	x, int y, char c)
+void	draw_tile(t_data *data, int	x, int y, char c, mlx_image_t *img)
 {
 	int	i;
 	int	j;
@@ -50,9 +50,11 @@ void	draw_tile(t_data *data, int	x, int y, char c)
 		while (j < TILE_SIZE)
 		{
 			if (c == '1')
-				mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(0, 0, 0, 255));
+				my_mlx_put_pixel(data, img, (t_coor){x + i, y + j}, get_rgba(0, 0, 0, 255));
+				// my_mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(0, 0, 0, 255));
 			else if (c == '0' || ft_strchr("NSEW", c))
-				mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(246, 230, 203, 255));
+				// mlx_put_pixel(data->map.img, x + i, y + j , get_rgba(246, 230, 203, 255));
+				my_mlx_put_pixel(data, img, (t_coor){x + i, y + j}, get_rgba(246, 230, 203, 255));
 			j++;
 		}
 		i++;
@@ -70,11 +72,11 @@ void	mini_map(t_data *data)
 		x = 0;
 		while (data->map.grid[y][x])
 		{
-			draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, data->map.grid[y][x]);
+			draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, data->map.grid[y][x], data->map.img);
 			x++;
 		}
 		y++;	
 	}
-	draw_player(data, data->player.coor);
+	draw_player(data, data->player.coor, data->map.img);
 	ft_dda(data);
 }
