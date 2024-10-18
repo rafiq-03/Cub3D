@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 15:37:49 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:54:32 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	keyhooks(mlx_key_data_t	keydata, void *dataa)
 		data->player.angle = ft_normalizer(data->player.angle - DEGREE);
 		// printf("angle = %f\n", data->player.angle);
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W) || mlx_is_key_down(data->mlx, MLX_KEY_UP))
 	{
 
 		
 		next.x = data->player.coor.x + cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y + sin(data->player.angle) * SPEED ;
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S) || mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
 	{
 		next.x = data->player.coor.x - cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y - sin(data->player.angle) * SPEED ;
@@ -78,7 +78,7 @@ void	ft_loop(void *dataa)
 	t_data *data;
 
 	data = (t_data *) dataa;
-	mini_map(data);
+	// mini_map(data);
 	mini_(data);
 	mlx_key_hook(data->mlx, keyhooks, data);
 }

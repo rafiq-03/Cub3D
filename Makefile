@@ -6,13 +6,13 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/16 18:20:07 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/10/18 17:47:33 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-# CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 MLX_FALGS=MLX42/build/libmlx42.a MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L src/libft -lft
