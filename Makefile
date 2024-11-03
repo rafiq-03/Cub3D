@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
+#    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/10/18 17:47:33 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/11/03 13:24:12 by mskhairi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 MLX_FALGS=MLX42/build/libmlx42.a MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L src/libft -lft
@@ -33,7 +33,7 @@ RAYCASTING_DIR = raycasting/
 S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), ft_init_mlx.c\
 											render_map.c \
 											ft_hooks.c \
-											ft_dda.c \
+											projection_3D.c \
 											ft_player.c \
 											mini_map.c \
 								)

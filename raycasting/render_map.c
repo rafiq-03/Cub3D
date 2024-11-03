@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 15:54:39 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:22:30 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,38 @@ void	draw_tile(t_data *data, int	x, int y, char c, mlx_image_t *img)
 	}
 }
 
-void	mini_map(t_data *data)
+void	cast_rays(t_data *data)
 {
-	int	x;
-	int	y;
+	// int	x;
+	// int	y;
 
-	y = 0;
-	while (data->map.grid[y])
+	// y = 0;
+	// while (data->map.grid[y])
+	// {
+	// 	x = 0;
+	// 	while (data->map.grid[y][x])
+	// 	{
+	// 		draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, data->map.grid[y][x], data->map.img);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
+	// draw_player(data, data->player.coor, data->map.img);
+	int i = 0;
+	int j = 0;
+	while (i < HEIGHT)
 	{
-		x = 0;
-		while (data->map.grid[y][x])
+		j = 0;
+		while (j < WIDTH)
 		{
-			draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, data->map.grid[y][x], data->map.img);
-			x++;
+			if (i < HEIGHT / 2)
+				mlx_put_pixel(data->ft_3D, j, i, get_rgba(196, 215, 255, 255));
+			else
+				mlx_put_pixel(data->ft_3D, j, i, get_rgba(73, 54, 40 , 255));
+			j++;
 		}
-		y++;	
+		i++;
 	}
-	draw_player(data, data->player.coor, data->map.img);
-	ft_dda(data);
+	mini_map(data);
+	projection_3D(data);
 }

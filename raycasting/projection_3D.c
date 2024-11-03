@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dda.c                                           :+:      :+:    :+:   */
+/*   projection_3D.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 15:30:36 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:26:32 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,17 +143,49 @@ t_coor	ft_compare(t_coor player, t_coor h, t_coor v, t_ray *ray)
 	if (PV <= PH)
 	{
 		ray->distance = PV;
+		ray->flag = 1;
 		return (v);
 	}
 	else
-	{		
+	{
 		ray->distance = PH;
+		ray->flag = 2;
 		return (h);
 	}
 }
+void	draw_columns(t_data *data, t_ray *ray, double angle)
+{
+	double	projection_column;
+	double	projection_distance;
+	// (void)angle;
+	ray->distance *= cos(data->player.angle - angle);
+	projection_distance = WIDTH / 2 * tan(FOV / 2);                                                                                                                   
+	projection_column = (TILE_SIZE * projection_distance) / ray->distance;
+	ray->top = (HEIGHT / 2) - (projection_column / 2);
+	ray->bottom = (HEIGHT / 2) + (projection_column / 2);
+	// printf("1---> (%f)\n", projection_column);
+	// printf("2---> (%d)\n", ray->top);
+	// printf("3---> (%d)\n", ray->bottom);
+	// printf("3---> (%f)\n", ray->Wall_hit.x);
+	// if (ray->flag == 1)
+	// 	color = get_rgba(255,0,255, 255);
+	// if (ray->flag == 2)
+	// 	color = get_rgba(255,0,255, 255);
+	while (ray->top <= ray->bottom)
+	{
+		if (ray->top >= 0 && ray->top < HEIGHT)
+			mlx_put_pixel(data->ft_3D, data->x_projection, ray->top , get_rgba(0,0,255, 255));
+		ray->top++;
+	}
+	// while (i < projection_column)
+	// {
+	// 	if (ray->top + i >= 0)
+	// 		mlx_put_pixel(data->ft_3D, ray->top + i, ray->Wall_hit.x , get_rgba(255,0,255, 255));
+	// 	i++;
+	// }
+}
 
-
-void	ft_dda(t_data *data)
+void	projection_3D(t_data *data)
 {
 	t_coor first_h;
 	t_coor first_v;
@@ -163,7 +195,8 @@ void	ft_dda(t_data *data)
 	data->rays = malloc(N_RAYS * sizeof(t_ray));
 	double angle = data->player.angle - FOV / 2;
 	int i = 0;
-	
+	data->x_projection = 0;
+	printf("--->>>> %f \n", data->player.angle * 180 / M_PI);
 	while (i < N_RAYS)// casting rays depened of player angle
 	{
 		first_h = first_h_inter(angle, data->player.coor);
@@ -171,19 +204,19 @@ void	ft_dda(t_data *data)
 		t_coor hit_h = h_wall_detect(data->map, first_h, angle);
 		t_coor hit_v = v_wall_detect(data->map, first_v, angle);
 		// t_coor small_d = ft_compare(data->player.coor, hit_h, hit_v);
-		
+
 		data->rays[i].Wall_hit = ft_compare(data->player.coor, hit_h, hit_v, &(data->rays[i]));
-		dda(data, data->player.coor, data->rays[i].Wall_hit, get_rgba(10, 100, 10, 255), data->map.img);
+		// printf("%d")
+		// dda(data, data->player.coor, data->rays[i].Wall_hit, get_rgba(10, 100, 10, 255), data->map.img);
 		// printf("distance = %f\n", data->rays[i].distance);
+		draw_columns(data, &data->rays[i], angle);
+		data->x_projection++;
 		angle += RAY_ANGLE_INC;
+		// printf("ray nbr -> %d\n", i);
 		i++;
 	}
-	dda(data, data->player.coor, (t_coor){data->player.coor.x + cos(data->player.angle) * 50,
-		data->player.coor.y + sin(data->player.angle) * 50}, get_rgba(255, 10, 0, 255), data->map.img);
-	
-
-
-
+	// dda(data, data->player.coor, (t_coor){data->player.coor.x + cos(data->player.angle) * 50,
+		// data->player.coor.y + sin(data->player.angle) * 50}, get_rgba(255, 10, 0, 255), data->map.img);
 		// first_h = first_h_inter(data->player.angle, data->player.coor);
 		// first_v = first_v_inter(data->player.angle, data->player.coor);
 		// t_coor hit_h = h_wall_detect(data->map, first_h, data->player.angle);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 17:41:08 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:10:28 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define	SPEED 10
 // #define RES 
 
-#define N_RAYS 10
+#define N_RAYS 1600
 
 #define FOV DEGREE_60
 
@@ -48,7 +48,7 @@
 
 typedef struct s_coor
 {
-	double	x;	
+	double	x;
 	double	y;
 	
 }	t_coor;
@@ -97,7 +97,9 @@ typedef	struct s_ray
 {
 	t_coor		Wall_hit;
 	double		distance;
-	
+	int top;
+	int bottom;
+	int flag;
 }	t_ray;
 
 typedef struct s_data
@@ -111,8 +113,7 @@ typedef struct s_data
 	mlx_t		*mlx;// mlx variable
 	mlx_image_t	*ft_3D;// image of 3d vue
 	t_ray		*rays;
-	
-	
+	int  x_projection;
 }	t_data;
 
 
@@ -122,7 +123,7 @@ typedef struct s_data
 /*--[ :: parsing :: ]--*/
 
 void	check_requirements(int ac, char **av, t_data *data);
-void	mini_map(t_data *data);
+void	cast_rays(t_data *data);
 void	my_mlx_put_pixel(t_data *data, mlx_image_t *img, t_coor coor, u_int32_t color);
 
 /*--[ :: raycasting :: ]--*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/15 17:40:19 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:24:43 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_coor set_pov(t_coor coor, char c)
 void	set_angle(t_player *player, char c)
 {
 	if (c == 'N')
-		player->angle = 4.71239;
+		player->angle = 270 * M_PI / 180;
 	if (c == 'S')
-		player->angle = 1.5708;
+		player->angle = 90 * M_PI / 180;
 	if (c == 'E')
 		player->angle = 0.0;
 	if (c == 'W')

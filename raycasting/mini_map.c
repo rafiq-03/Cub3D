@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:17 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 17:44:41 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:31:42 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void mini_(t_data *data)
+void mini_map(t_data *data)
 {
 	double x;
 	double y;
@@ -52,5 +52,4 @@ void mini_(t_data *data)
 	}
 	draw_player(data, (t_coor){10 * TILE_SIZE + fmod (data->player.coor.x, TILE_SIZE),
 		5 * TILE_SIZE + fmod (data->player.coor.y, TILE_SIZE)}, data->ft_3D);
-	
 }

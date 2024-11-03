@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 15:56:49 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:30:13 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,6 @@ void	init_mlx_elements(t_data *data)
 	}
 	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
 	mlx_image_to_window(data->mlx, data->map.img, 400 , 400);
-	int i = 0;
-	int j = 0;
-	while (i < HEIGHT)
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			if (i < HEIGHT / 2)
-				mlx_put_pixel(data->ft_3D, j, i, get_rgba(196, 215, 255, 255));
-			else		
-				mlx_put_pixel(data->ft_3D, j, i, get_rgba(73, 54, 40 , 255));
-			j++;
-		}
-		i++;
-	}
 }
 
 double ft_normalizer(double angle)

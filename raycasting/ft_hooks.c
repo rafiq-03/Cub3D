@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 16:54:32 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:31:17 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	ft_loop(void *dataa)
 	t_data *data;
 
 	data = (t_data *) dataa;
-	// mini_map(data);
-	mini_(data);
+	cast_rays(data);
 	mlx_key_hook(data->mlx, keyhooks, data);
 }
