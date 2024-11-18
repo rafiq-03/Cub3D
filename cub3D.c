@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/28 11:00:44 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:48:46 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int main(int ac, char **av)
 	check_requirements(ac, av,&data);
 	init_mlx_elements(&data);
 	mlx_loop_hook(data.mlx, ft_loop, &data);
+	printf("---->%s\n", data.textures.NO);
+	printf("---->%s\n", data.textures.SO);
+	printf("---->%s\n", data.textures.EA);
+	printf("---->%s\n", data.textures.WE);
 
 	mlx_loop(data.mlx);
 	clean_all(&data);

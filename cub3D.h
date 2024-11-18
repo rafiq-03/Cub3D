@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/03 12:10:28 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:46:32 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@
 #define MINI_HEIGHT TILE_SIZE * 10
 #define MINI_WIDTH  TILE_SIZE * 20
 
-#define DEGREE_90 1.5708
-#define DEGREE_60 1.0472
+#define DEGREE_0 0.0
+#define DEGREE_90 90 * M_PI / 180
+#define DEGREE_60 60 * M_PI / 180
+#define DEGREE_180 M_PI
+#define DEGREE_270 270 * M_PI / 180
 
 #define WIDTH 1600
 #define HEIGHT 1000
 
 #define RAD M_PI / 180 // one radian
 #define DEGREE 5 * M_PI / 180
-#define	SPEED 10
+#define	SPEED 2
 // #define RES 
 
 #define N_RAYS 1600
@@ -95,10 +98,10 @@ typedef struct s_texture
 
 typedef	struct s_ray
 {
-	t_coor		Wall_hit;
+	t_coor		 Wall_hit;
 	double		distance;
-	int top;
-	int bottom;
+	double top;
+	double bottom;
 	int flag;
 }	t_ray;
 
@@ -113,7 +116,16 @@ typedef struct s_data
 	mlx_t		*mlx;// mlx variable
 	mlx_image_t	*ft_3D;// image of 3d vue
 	t_ray		*rays;
-	int  x_projection;
+	double  x_projection;
+	mlx_texture_t *texture_img1;
+	mlx_texture_t *texture_img2;
+	mlx_texture_t *texture_img3;
+	mlx_texture_t *texture_img4;
+	mlx_image_t *img1;
+	mlx_image_t *img2;
+	mlx_image_t *img3;
+	mlx_image_t *img4;
+	double first_player_angle;
 }	t_data;
 
 
