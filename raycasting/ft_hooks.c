@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/30 19:31:17 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:52:07 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	collision_detected(t_map map, t_coor p_coor)
 	return (0);
 }
 
-void	keyhooks(mlx_key_data_t	keydata, void *dataa)
+void	key(void *dataa)
 {
 	t_data *data;
 
 	data = (t_data *)dataa;
-	(void) keydata;
 	t_coor next;
 
 	next = data->player.coor;
@@ -53,12 +52,12 @@ void	keyhooks(mlx_key_data_t	keydata, void *dataa)
 		next.x = data->player.coor.x - cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y - sin(data->player.angle) * SPEED ;
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 	{
 		next.x = data->player.coor.x + cos(data->player.angle - DEGREE_90) * SPEED ;
 		next.y = data->player.coor.y +  sin(data->player.angle - DEGREE_90) * SPEED ;
 	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 	{
 		next.x = data->player.coor.x + cos(data->player.angle + DEGREE_90) * SPEED ;
 		next.y = data->player.coor.y + sin(data->player.angle + DEGREE_90) * SPEED ;
@@ -79,5 +78,5 @@ void	ft_loop(void *dataa)
 
 	data = (t_data *) dataa;
 	cast_rays(data);
-	mlx_key_hook(data->mlx, keyhooks, data);
+	key(dataa);
 }
