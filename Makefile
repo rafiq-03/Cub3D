@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/11/21 17:36:16 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/11/21 17:42:09 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(NAME): mandatory/$(NAME).o $(O_PARSING) $(O_GAME)
 	make -C utils/libft
 	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) mandatory/$(NAME).o $(O_GAME) $(O_PARSING) -o $(NAME)
 
-%.o:%.c cube3d.h
+%.o:%.c mandatory/$(NAME).h
 	$(CC) -c $(CFLAGS) $< -o $@
 clean:
 	make fclean -C utils/libft
