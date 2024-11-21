@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:17 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/30 19:31:42 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:55:18 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "game.h"
 
 void mini_map(t_data *data)
 {

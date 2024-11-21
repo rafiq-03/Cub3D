@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   projection_3D.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/03 13:26:32 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:55:23 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "game.h"
 
 void	dda(t_data *data, t_coor a, t_coor b, int color, mlx_image_t *img)
 {

@@ -6,11 +6,11 @@
 /*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:38:51 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/18 16:52:44 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:55:15 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "game.h"
 
 void	draw_player(t_data *data, t_coor coor, mlx_image_t *img)
 {
