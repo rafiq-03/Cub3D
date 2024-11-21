@@ -3,23 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/11/03 13:24:12 by mskhairi         ###   ########.fr        #
+#    Updated: 2024/11/21 17:36:16 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-MLX_FALGS=MLX42/build/libmlx42.a MLX42/build/libglfw3.a
+MLX_FALGS=utils/MLX42/build/libmlx42.a utils/MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
-LIBFT_FLAGS = -L src/libft -lft
+LIBFT_FLAGS = -L utils/libft -lft
 
 NAME = cub3D
+NAME_B = cub3D_bonus
 
-PARSING_DIR = parsing/
+PARSING_DIR = mandatory/parsing/
 S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 									ft_textures.c\
 									ft_colors.c\
@@ -29,8 +29,8 @@ S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 
 O_PARSING = $(S_PARSING:.c=.o)
 
-RAYCASTING_DIR = raycasting/
-S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), ft_init_mlx.c\
+GAME_DIR = mandatory/game/
+S_GAME= $(addprefix $(GAME_DIR), ft_init_mlx.c\
 											render_map.c \
 											ft_hooks.c \
 											projection_3D.c \
@@ -38,20 +38,20 @@ S_RAYCASTING= $(addprefix $(RAYCASTING_DIR), ft_init_mlx.c\
 											mini_map.c \
 								)
 
-O_RAYCASTING = $(S_RAYCASTING:.c=.o)
+O_GAME = $(S_GAME:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(NAME).o $(O_PARSING) $(O_RAYCASTING)
-	make -C src/libft
-	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) $(NAME).o $(O_RAYCASTING) $(O_PARSING) -o $(NAME)
+$(NAME): mandatory/$(NAME).o $(O_PARSING) $(O_GAME)
+	make -C utils/libft
+	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) mandatory/$(NAME).o $(O_GAME) $(O_PARSING) -o $(NAME)
 
 %.o:%.c cube3d.h
 	$(CC) -c $(CFLAGS) $< -o $@
 clean:
-	# make fclean -C src/libft
-	rm -f $(NAME).o 
-	rm -fr $(O_PARSING) $(O_RAYCASTING)
+	make fclean -C utils/libft
+	rm -f mandatory/$(NAME).o
+	rm -fr $(O_PARSING) $(O_GAME)
 
 fclean: clean
 	rm -f $(NAME)
