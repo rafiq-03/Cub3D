@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/21 17:55:12 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/22 09:43:14 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
 
 void	my_mlx_put_pixel(t_data *data, mlx_image_t *img,t_coor coor, u_int32_t color)
 {
@@ -39,6 +38,15 @@ void	init_mlx_elements(t_data *data)
 		ft_strerr("failed to create mlx pointer");
 		return ;
 	}
+	data->texture_img1 = mlx_load_png(data->textures.NO);
+	data->texture_img2 = mlx_load_png(data->textures.SO);
+	data->texture_img3 = mlx_load_png(data->textures.EA);
+	data->texture_img4 = mlx_load_png(data->textures.WE);
+	if (!data->texture_img1 || !data->texture_img2 || !data->texture_img3 || !data->texture_img4)
+	{
+		printf("heeeeey11\n");
+		exit(EXIT_FAILURE);
+	}
 	data->ft_3D = mlx_new_image(data->mlx, WIDTH , HEIGHT);
 	if (!data->ft_3D)
 	{
@@ -53,6 +61,17 @@ void	init_mlx_elements(t_data *data)
 	}
 	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
 	mlx_image_to_window(data->mlx, data->map.img, 400 , 400);
+	data->img1 = mlx_texture_to_image(data->mlx, data->texture_img1);
+	data->img2 = mlx_texture_to_image(data->mlx, data->texture_img2);
+	data->img3 = mlx_texture_to_image(data->mlx, data->texture_img3);
+	data->img4 = mlx_texture_to_image(data->mlx, data->texture_img4);
+	if (!data->img1 || !data->img2 || !data->img3 || !data->img4)
+	{
+		printf("heeeeey\n");
+		exit(EXIT_FAILURE);
+	}
+    mlx_get_mouse_pos(data->mlx, &data->mouse_position.x, &data->mouse_position.y);
+    data->tmp_p_mouse = data->mouse_position.x;
 }
 
 double ft_normalizer(double angle)

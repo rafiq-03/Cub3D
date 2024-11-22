@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/21 17:55:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:25:31 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
 
 int	collision_detected(t_map map, t_coor p_coor)
 {
@@ -22,28 +21,16 @@ int	collision_detected(t_map map, t_coor p_coor)
 	return (0);
 }
 
-void	key(void *dataa)
+void	key(t_data *data)
 {
-	t_data *data;
-
-	data = (t_data *)dataa;
 	t_coor next;
-
 	next = data->player.coor;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-	{
 		data->player.angle = ft_normalizer(data->player.angle + DEGREE);
-		// printf("angle = %f\n", data->player.angle);
-	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-	{
 		data->player.angle = ft_normalizer(data->player.angle - DEGREE);
-		// printf("angle = %f\n", data->player.angle);
-	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W) || mlx_is_key_down(data->mlx, MLX_KEY_UP))
 	{
-
-		
 		next.x = data->player.coor.x + cos(data->player.angle) * SPEED ;
 		next.y = data->player.coor.y + sin(data->player.angle) * SPEED ;
 	}
@@ -75,8 +62,8 @@ void	key(void *dataa)
 void	ft_loop(void *dataa)
 {
 	t_data *data;
-
 	data = (t_data *) dataa;
 	cast_rays(data);
 	key(dataa);
 }
+
