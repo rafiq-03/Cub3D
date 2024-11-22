@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/22 09:47:45 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:32:27 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,6 @@ typedef struct s_coor
 	double	y;
 	
 }	t_coor;
-
-typedef struct s_mouse
-{
-	int	x;
-	int	y;
-	
-}	t_mouse;
 
 typedef struct s_player
 {
@@ -114,8 +107,6 @@ typedef	struct s_ray
 
 typedef struct s_data
 {
-    t_mouse mouse_position;
-    int tmp_p_mouse;
 	t_list		*file_content;// content from map's file
 	t_map		map;// struct of infos of map
 	t_texture	textures;// textures from file
