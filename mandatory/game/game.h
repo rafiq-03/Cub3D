@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:46 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/22 09:55:10 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:01:29 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCASTING_H
-#define RAYCASTING_H
+#ifndef GAME_H
+#define GAME_H
 
 
 #include "../cub3D.h"
@@ -27,5 +27,20 @@ double	ft_normalizer(double angle);
 void	projection_3D(t_data *data);
 void	dda(t_data *data, t_coor a, t_coor b, int color, mlx_image_t *img);
 
+int gett_rgba(uint8_t *color);
+
+void	render_all(t_data *data);
+
+t_coor	first_h_inter(double angle, t_coor player);
+t_coor	first_v_inter(double angle, t_coor player);
+t_coor h_wall_detect(t_map map, t_coor first, double angle);
+t_coor v_wall_detect(t_map map, t_coor first, double angle);
+t_coor	ft_compare(t_coor player, t_coor h, t_coor v, t_ray *ray);
+
+void	draw_columns(t_data *data, t_ray *ray, double angle);
+void render_background(t_data *data);
+
+// testing
 void mini_map(t_data *data);
+
 #endif

@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_mlx.c                                      :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/22 10:32:07 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/23 14:41:37 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void	my_mlx_put_pixel(t_data *data, mlx_image_t *img,t_coor coor, u_int32_t color)
-{
-	if (coor.x >= 0 && coor.x < data->map.width * TILE_SIZE && coor.y >= 0 && coor.y < data->map.heigth * TILE_SIZE)
-	{
-		mlx_put_pixel(img, (int) coor.x,(int) coor.y, color);
-	}
-}
 
-int get_rgba(int r, int g, int b, int a)
+void	init_mlx_imgs(t_data *data)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
-}
-
-void	init_mlx_elements(t_data *data)
-{
-	/*
-		player		img
-		map			img
-		mlx pointer;
-	*/
-	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
-	if (!data->mlx)
-	{
-		ft_strerr("failed to create mlx pointer");
-		return ;
-	}
 	data->texture_img1 = mlx_load_png(data->textures.NO);
 	data->texture_img2 = mlx_load_png(data->textures.SO);
 	data->texture_img3 = mlx_load_png(data->textures.EA);
@@ -47,20 +24,6 @@ void	init_mlx_elements(t_data *data)
 		printf("heeeeey11\n");
 		exit(EXIT_FAILURE);
 	}
-	data->ft_3D = mlx_new_image(data->mlx, WIDTH , HEIGHT);
-	if (!data->ft_3D)
-	{
-		ft_strerr("3d vue's image error");
-		exit(EXIT_FAILURE);
-	}
-	data->map.img = mlx_new_image(data->mlx, data->map.width * TILE_SIZE, data->map.width * TILE_SIZE);
-	if (!data->map.img)
-	{
-		ft_strerr("map's img error");
-		exit(EXIT_FAILURE);
-	}
-	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
-	mlx_image_to_window(data->mlx, data->map.img, 400 , 400);
 	data->img1 = mlx_texture_to_image(data->mlx, data->texture_img1);
 	data->img2 = mlx_texture_to_image(data->mlx, data->texture_img2);
 	data->img3 = mlx_texture_to_image(data->mlx, data->texture_img3);
@@ -70,13 +33,23 @@ void	init_mlx_elements(t_data *data)
 		printf("heeeeey\n");
 		exit(EXIT_FAILURE);
 	}
+	// must delete textures
 }
 
-double ft_normalizer(double angle)
+void	init_mlx_elements(t_data *data)
 {
-	if (angle < 0)
-        angle = 2 * M_PI + angle;
-    else if (angle >= 2 * M_PI)
-        angle = fmod(angle, 2 * M_PI);
-    return angle;
+	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
+	if (!data->mlx)
+	{
+		ft_strerr("failed to create mlx pointer");
+		return ;
+	}
+	data->ft_3D = mlx_new_image(data->mlx, WIDTH , HEIGHT);
+	if (!data->ft_3D)
+	{
+		ft_strerr("3d vue's image error");
+		exit(EXIT_FAILURE);
+	}
+	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
+	init_mlx_imgs(data);
 }

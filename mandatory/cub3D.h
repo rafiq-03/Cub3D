@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/22 10:32:27 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:45:47 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdio.h> // for testing
 #include <fcntl.h>
 #include <math.h>
-#include "../../MLX42/include/MLX42/MLX42.h"
+#include "../utils/MLX42/include/MLX42/MLX42.h"
 #include "../utils/libft/libft.h"
 
 #define TILE_SIZE  24
@@ -36,7 +36,7 @@
 #define HEIGHT 1000
 
 #define RAD M_PI / 180 // one radian
-#define DEGREE 5 * M_PI / 180
+#define DEGREE 2 * M_PI / 180
 #define	SPEED 2
 // #define RES 
 
@@ -70,7 +70,6 @@ typedef struct s_map
 	char	**grid;
 	int		width; // width of map
 	int		heigth;// height of map
-	mlx_image_t *img;// image of map
 }	t_map;
 
 typedef	struct s_rgb
@@ -135,10 +134,12 @@ typedef struct s_data
 /*--[ :: parsing :: ]--*/
 
 void	check_requirements(int ac, char **av, t_data *data);
-void	cast_rays(t_data *data);
-void	my_mlx_put_pixel(t_data *data, mlx_image_t *img, t_coor coor, u_int32_t color);
 
-/*--[ :: raycasting :: ]--*/
+/*--[ :: game :: ]--*/
+
+void	key_hooks(t_data *data);
+void	render_all(t_data *data);
+void	cast_rays(t_data *data);
 
 void	ft_loop(void *dataa);// loop hook
 

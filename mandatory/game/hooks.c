@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hooks.c                                         :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/22 10:25:31 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:49:08 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 
 int	collision_detected(t_map map, t_coor p_coor)
 {
-	if (map.grid[(int)(p_coor.y / TILE_SIZE)]
-	&& map.grid[(int)(p_coor.y / TILE_SIZE)][(int)(p_coor.x / TILE_SIZE)] 
-	&& map.grid[(int)(p_coor.y / TILE_SIZE)][(int)(p_coor.x / TILE_SIZE)] == '1')
-		return (1);
+	t_coor coor = p_coor;
+	coor.y = p_coor.y - 4;
+	while (coor.y < p_coor.y + 4)
+	{
+		coor.x = p_coor.x - 4;
+		while (coor.x < p_coor.x + 4)
+		{
+			if (map.grid[(int)(coor.y / TILE_SIZE)] 
+			&& map.grid[(int)(coor.y / TILE_SIZE)][(int)(coor.x / TILE_SIZE)] 
+			&& map.grid[(int)(coor.y / TILE_SIZE)][(int)(coor.x / TILE_SIZE)] == '1')
+			return (1);
+			coor.x++;
+		}
+		coor.y++;	
+	}
 	return (0);
 }
 
-void	key(t_data *data)
+void	key_hooks(t_data *data)
 {
 	t_coor next;
+
 	next = data->player.coor;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		data->player.angle = ft_normalizer(data->player.angle + DEGREE);
@@ -56,14 +68,5 @@ void	key(t_data *data)
 	}
 	if (!collision_detected(data->map, next))
 		data->player.coor = next;
-}
-// printf("x = %f, y = %f\n", data->player.coor.x, data->player.coor.y);
-
-void	ft_loop(void *dataa)
-{
-	t_data *data;
-	data = (t_data *) dataa;
-	cast_rays(data);
-	key(dataa);
 }
 

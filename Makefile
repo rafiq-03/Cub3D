@@ -6,12 +6,12 @@
 #    By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/11/21 17:42:09 by rmarzouk         ###   ########.fr        #
+#    Updated: 2024/11/23 16:39:10 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3 
 MLX_FALGS=utils/MLX42/build/libmlx42.a utils/MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L utils/libft -lft
@@ -30,12 +30,13 @@ S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 O_PARSING = $(S_PARSING:.c=.o)
 
 GAME_DIR = mandatory/game/
-S_GAME= $(addprefix $(GAME_DIR), ft_init_mlx.c\
-											render_map.c \
-											ft_hooks.c \
-											projection_3D.c \
-											ft_player.c \
-											mini_map.c \
+S_GAME= $(addprefix $(GAME_DIR), 			init_mlx.c\
+											render.c \
+											hooks.c \
+											textures.c \
+											utils.c\
+											raycasting.c\
+											map.c\
 								)
 
 O_GAME = $(S_GAME:.c=.o)
