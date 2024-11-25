@@ -1,7 +1,7 @@
-NO ../textures/simonkraft/bookshelf_01.png
-SO ../textures/200.png
-EA ../textures/200.png
-WE ../textures/200.png
+NO 1.png
+SO 1.png
+EA 1.png
+WE 1.png
 
 F 220,100,0
 C 225,30,0

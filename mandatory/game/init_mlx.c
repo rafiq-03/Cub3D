@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/23 14:41:37 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:36 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_mlx_imgs(t_data *data)
 
 void	init_mlx_elements(t_data *data)
 {
+    data->rotate_angle = DEGREE;
 	data->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
 	if (!data->mlx)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/23 16:47:06 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:27 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,20 @@ void textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
 }
 void	draw_columns(t_data *data, t_ray *ray, double angle)
 {
-    double	projection_column;
-	double	projection_distance;
-
-	
 	ray->distance *= cos(data->player.angle - angle);
-	projection_distance = WIDTH / 2 * tan(FOV / 2);
-	projection_column = ((TILE_SIZE * projection_distance) / ray->distance) * 2;
-	// printf("distance_column = %f\n", projection_column);
-	ray->top = (HEIGHT / 2) - (projection_column / 2);
-	ray->bottom = (HEIGHT / 2) + (projection_column / 2);
+	ray->projection_distance = WIDTH / 2 * tan(FOV / 2);
+	ray->projection_column = ((TILE_SIZE * ray->projection_distance) / ray->distance) * 2;
+	ray->top = (HEIGHT / 2) - (ray->projection_column / 2);
+	ray->bottom = (HEIGHT / 2) + (ray->projection_column / 2);
+	printf("distance_column = %f\n", ray->projection_column);
+    if(ray->projection_column >= 2000)
+        data->rotate_angle = 3 * DEGREE;
+    else if(data->tmp_column_height >= 1600)
+        data->rotate_angle = 2.5 * DEGREE;
+    else if(data->tmp_column_height >= 1200)
+        data->rotate_angle = 2 * DEGREE;
+    else if(data->tmp_column_height >= 800)
+        data->rotate_angle = 1.5 * DEGREE;
 	if ((sin(angle) <= 0 && ray->flag == 'h'))//----->top
 		textures(data, ray, data->img1, 1);
 	if ((sin(angle) >= 0 && ray->flag == 'h'))//buttom

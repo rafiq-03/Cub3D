@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/23 16:49:08 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:56 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	key_hooks(t_data *data)
 
 	next = data->player.coor;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		data->player.angle = ft_normalizer(data->player.angle + DEGREE);
+		data->player.angle = ft_normalizer(data->player.angle + data->rotate_angle);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		data->player.angle = ft_normalizer(data->player.angle - DEGREE);
+		data->player.angle = ft_normalizer(data->player.angle - data->rotate_angle);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W) || mlx_is_key_down(data->mlx, MLX_KEY_UP))
 	{
 		next.x = data->player.coor.x + cos(data->player.angle) * SPEED ;
