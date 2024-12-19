@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:22:16 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:04 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,13 @@ typedef struct s_texture
 
 typedef	struct s_ray
 {
-	int         color;
-	double      x_texture;
-	double      y_texture;
-	t_coor		Wall_hit;
+	t_coor		 Wall_hit;
     double		distance;
     double	    projection_distance;
     double      projection_column;
-	double      top;
-	double      bottom;
-	int         flag;
+	double top;
+	double bottom;
+	int flag;
 }	t_ray;
 
 typedef struct s_data

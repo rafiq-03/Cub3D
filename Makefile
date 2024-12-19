@@ -6,12 +6,12 @@
 #    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/11/25 10:52:51 by mskhairi         ###   ########.fr        #
+#    Updated: 2024/12/19 18:32:11 by mskhairi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-O3 
+CFLAGS = -Wall -Wextra -Werror -O3 
 MLX_FALGS=utils/MLX42/build/libmlx42.a utils/MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L utils/libft -lft

@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:19:00 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:35:36 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_mlx_imgs(t_data *data)
 	data->texture_img4 = mlx_load_png(data->textures.WE);
 	if (!data->texture_img1 || !data->texture_img2 || !data->texture_img3 || !data->texture_img4)
 	{
-		printf("Load_png Error!\n");
+		printf("heeeeey11\n");
 		exit(EXIT_FAILURE);
 	}
 	data->img1 = mlx_texture_to_image(data->mlx, data->texture_img1);
@@ -30,9 +30,10 @@ void	init_mlx_imgs(t_data *data)
 	data->img4 = mlx_texture_to_image(data->mlx, data->texture_img4);
 	if (!data->img1 || !data->img2 || !data->img3 || !data->img4)
 	{
-		printf("Texture_to_image Error!\n");
+		printf("heeeeey\n");
 		exit(EXIT_FAILURE);
 	}
+	// must delete textures
 }
 
 void	init_mlx_elements(t_data *data)
@@ -52,5 +53,4 @@ void	init_mlx_elements(t_data *data)
 	}
 	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
 	init_mlx_imgs(data);
-	// must delete textures
 }

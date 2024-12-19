@@ -6,45 +6,49 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:24:46 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:34:15 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "game.h"
-void	put_textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
-{
-	int    i;
-
-	i = ray->top;
-	while(i < ray->bottom)
-	{
-		ray->y_texture = ((i - ray->top) / (ray->bottom - ray->top)) * img->height;
-		if (i >= 0 && i < HEIGHT)
-		{
-			if ((int)ray->y_texture * img->width + (int)ray->x_texture <= img->height * img->width)
-			{
-                if (!flag)
-                {
-                        ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (img->width - (int)ray->x_texture))) * 4]);
-                }
-                else
-                    ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (int)ray->x_texture)) * 4]);
-                    
-				mlx_put_pixel(data->ft_3D, data->x_projection  , i, ray->color);
-			}
-		}
-		i++;
-	}
-}
 
 void textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
 {
+	double x_texture;
+	double y_texture;
+	int i;
+	int color;
+
+	// x_of_texture = 0;
+	// x_texture = (ray->Wall_hit.y / TILE_SIZE - floor(ray->Wall_hit.y / TILE_SIZE)) * data->img1->height;
+	i = ray->top;
 	if (ray->flag == 'h')
-		ray->x_texture = (ray->Wall_hit.x / TILE_SIZE - floor(ray->Wall_hit.x / TILE_SIZE)) * img->width;
+		x_texture = (ray->Wall_hit.x / TILE_SIZE - floor(ray->Wall_hit.x / TILE_SIZE)) * img->width;
 	else if (ray->flag == 'v')
-		ray->x_texture = (ray->Wall_hit.y / TILE_SIZE - floor(ray->Wall_hit.y / TILE_SIZE)) * img->width;
-	put_textures(data, ray, img, flag);
+		x_texture = (ray->Wall_hit.y / TILE_SIZE - floor(ray->Wall_hit.y / TILE_SIZE)) * img->width;
+	while(i < ray->bottom)
+	{
+		y_texture = ((i - ray->top) / (ray->bottom - ray->top)) * img->height;
+		// printf("x-->%d\n", img->width);
+		// printf("y-->%f\n", y_texture);
+		if (i >= 0 && i < HEIGHT)
+		{
+			if ((int)y_texture * img->width + (int)x_texture <= img->height * img->width)
+			{
+                if (!flag)
+                {
+                        color = gett_rgba(&img->pixels[(((int)y_texture * img->width + (img->width - (int)x_texture))) * 4]);
+                }
+                else
+                    color = gett_rgba(&img->pixels[(((int)y_texture * img->width + (int)x_texture)) * 4]);
+                    
+				mlx_put_pixel(data->ft_3D, data->x_projection  , i, color);
+			}
+			// mlx_put_pixel(data->ft_3D,data->x_projection , i, get_rgba(255,255,255,255));
+		}
+		i++;
+	}
 }
 void	draw_columns(t_data *data, t_ray *ray, double angle)
 {

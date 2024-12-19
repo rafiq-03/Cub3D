@@ -6,7 +6,7 @@
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:35:05 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:49:47 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	render_all(t_data *data)
 {
     render_background(data);
 	projection_3D(data);
+	mini_map(data);
+	// rander_walls();
 }

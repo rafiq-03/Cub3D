@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:58:20 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:47:33 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:43:49 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_coor	first_v_inter(double angle, t_coor player)
 	first_v.y = player.y + tan(angle) * (first_v.x - player.x);
 	return (first_v);
 }
-//should be shorter
+
 t_coor h_wall_detect(t_map map, t_coor first, double angle)
 {
 	t_coor hit;
@@ -71,7 +71,7 @@ t_coor h_wall_detect(t_map map, t_coor first, double angle)
 	}
 	return (hit);
 }
-//should be shorter
+
 t_coor v_wall_detect(t_map map, t_coor first, double angle)
 {
 	t_coor hit;
