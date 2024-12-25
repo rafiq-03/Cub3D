@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:21:24 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/11 18:57:58 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:08:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ void	del(void *content);
 
 void	add_texture(char **texture, char *line, u_int16_t *flag);
 void	clean_textures(t_texture *textures);
-void	fill_textures(t_data *data);
+void	fill_textures(t_data *data, char **split);
+int     texture_color(char *s);
 
 int		is_number(char *str);
 int		check_color(char *str);
 void	add_color(t_data *data, char **r, char **gb);
-void	fill_colors(t_data *data);
+void	fill_colors(t_data *data, char *line);
 
 void	after_map(t_list *tmp);
 t_list	*skip_header(t_list *tmp, int end);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_colors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/10/10 15:30:49 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:09:01 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	check_color(char *str)
 	tmp = ft_split_ws(str, " \t\b\r", &words);
 	if (words == 1 && is_number(tmp[0]))
 	{
-		
 		nb = ft_atoi(tmp[0]);
 		if (nb >= 0 && nb <= 255)
 		{
@@ -61,7 +60,7 @@ void	add_color(t_data *data, char **r, char **gb)
 			data->colors.F.r = ft_atoi(r[1]);
 			data->colors.F.g = ft_atoi(gb[1]);
 			data->colors.F.b = ft_atoi(gb[2]);
-			data->colors.flag++;
+			data->colors.flag += 2;
 		}
 		else if (!ft_strcmp(r[0], "C"))
 		{
@@ -69,43 +68,46 @@ void	add_color(t_data *data, char **r, char **gb)
 			data->colors.C.r = ft_atoi(r[1]);
 			data->colors.C.g = ft_atoi(gb[1]);
 			data->colors.C.b = ft_atoi(gb[2]);
-			data->colors.flag++;	
-		}
+			data->colors.flag++;
+		}		
 	}
 }
-
-void	fill_colors(t_data *data)
+int	n_chars(char *str, char c)
 {
-	t_list *tmp;
+	int	num;
+
+	num = 0;
+	if (!str)
+		return (num);
+	while (*str)
+	{
+		if (*str == c)
+			num++;
+		str++;
+	}
+	return (num);
+}
+
+void	fill_colors(t_data *data, char *line)
+{
 	char **split_1;
 	char **split_2;
 	int		words;
 
-	tmp = data->file_content;
-	data->colors.flag = 0;
-	while (tmp)
+	if (n_chars(line, ',') != 2)
 	{
-		if (data->colors.flag == 2 && tmp->i > data->header_end)// it's not valid\n
-		{
-			data->header_end = tmp->i;
-			return ;
-		}
-		split_1 = ft_split_ws(tmp->content, ",\n", &words);
-		if (words == 3)
-		{
-			split_2 = ft_split_ws(split_1[0], "\t ", &words);
-			if (words == 2)
-				add_color(data, split_2, split_1);
-			ft_free(split_2);
-		}
-		ft_free(split_1);	
-		tmp = tmp->next;
-	}
-	if (data->colors.flag != 2)
-	{
-		ft_strerr("Colors are not valid");
+		ft_strerr("Invalid color line");
 		exit(EXIT_FAILURE);
 	}
+	split_1 = ft_split_ws(line, ",\n", &words);
+	if (words == 3)
+	{
+		split_2 = ft_split_ws(split_1[0], "\t ", &words);
+		if (words == 2)
+			add_color(data, split_2, split_1);
+		ft_free(split_2);
+	}
+	ft_free(split_1);
 }
 	// printf("F == [%d][%d][%d]\n", data->colors.F.r, data->colors.F.g, data->colors.F.b);
 	// printf("C == [%d][%d][%d]\n", data->colors.C.r, data->colors.C.g, data->colors.C.b);
