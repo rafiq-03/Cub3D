@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/25 20:07:34 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:19:59 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ void check_textures_colors(t_data *data)
 	data->colors.flag = 0;
 	while (tmp)
 	{
+		if (data->textures.flag == 4 && data->colors.flag == 3)
+		{
+			data->header_end = tmp->i;
+			break;	
+		}
 		line = ft_strtrim(tmp->content, " \n\b\t\r");
 		if (!ft_strlen(line))// skip empty lines
 		{
@@ -82,13 +87,13 @@ void check_textures_colors(t_data *data)
 				exit (EXIT_FAILURE);
 			}
 		}
-		else if (!check_all_line(line, "NSWE10 ") && data->textures.flag == 4
-			&& data->colors.flag == 3)// it is map
-		{
-			printf ("%s\n", line);
-			tmp = tmp->next;
-			continue;
-		}
+		// else if (!check_all_line(line, "NSWE10 ") && data->textures.flag == 4
+		// 	&& data->colors.flag == 3)// it is map
+		// {
+		// 	// printf ("%s\n", line);
+		// 	tmp = tmp->next;
+		// 	continue;
+		// }
 		else
 		{
 			ft_strerr("ivalid texture or color");
@@ -117,9 +122,7 @@ void	check_requirements(int ac, char **av, t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	check_textures_colors(data);
-	// fill_textures(data);
-	// fill_colors(data);
-	// fill_map(data);
+	fill_map(data);
 	printf ("mzyan\n");
 	ft_lstclear(&data->file_content, &del);
 }
