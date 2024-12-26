@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/12/19 18:32:11 by mskhairi         ###   ########.fr        #
+#    Updated: 2024/12/26 16:52:15 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ S_PARSING= $(addprefix $(PARSING_DIR), ft_requirements.c\
 									ft_textures.c\
 									ft_colors.c\
 									ft_map.c\
+									ft_utils.c\
 									ft_map_utils.c\
 								)
 
