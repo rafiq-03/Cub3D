@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 16:48:50 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/26 18:27:26 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	check_edges(char **map, int height, int width)
 
 void	check_around(char **map, int x, int y)
 {
-	if (map[y - 1][x] == ' ' || map[y - 1][x] == ' ' 
+	if (map[y - 1][x] == ' ' || map[y][x + 1] == ' ' 
 	|| map[y][x - 1] == ' ' || map[y + 1][x] == ' ')
 	{
 		ft_strerr("map is not surrounded by walls");
