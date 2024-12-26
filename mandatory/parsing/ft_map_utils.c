@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:51:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/11/03 12:24:43 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:45:37 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,7 @@ void	check_edges(char **map, int height, int width)
 void	check_around(char **map, int x, int y)
 {
 	if (map[y - 1][x] == ' ' || map[y - 1][x] == ' ' 
-	|| map[y - 1][x + 1] == ' ' || map[y][x - 1] == ' ' 
-	|| map[y][x + 1] == ' ' || map[y + 1][x - 1] == ' ' 
-	|| map[y + 1][x] == ' ' || map[y + 1][x + 1] == ' ')
+	|| map[y][x - 1] == ' ' || map[y + 1][x] == ' ')
 	{
 		ft_strerr("map is not surrounded by walls");
 		exit(EXIT_FAILURE);

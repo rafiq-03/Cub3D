@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:24:46 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:39:51 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	put_textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
 			{
                 if (!flag)
                 {
-                        ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (img->width - (int)ray->x_texture))) * 4]);
+                        ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (img->width - 1 - (int)ray->x_texture))) * 4]);
                 }
                 else
                     ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (int)ray->x_texture)) * 4]);
