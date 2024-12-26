@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/25 20:46:22 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:22:29 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void check_textures_colors(t_data *data)
 		if (!ft_strlen(line))// skip empty lines
 		{
 			tmp = tmp->next;
+			free (line);
 			continue;
 		}
 		split = ft_split_ws(line, " ", &words);
@@ -95,8 +96,9 @@ void check_textures_colors(t_data *data)
 			exit(EXIT_FAILURE);
 		}
 		tmp = tmp->next;
+		ft_free (split);
+		free (line);
 	}
-	
 }
 
 void	check_requirements(int ac, char **av, t_data *data)
@@ -117,6 +119,7 @@ void	check_requirements(int ac, char **av, t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	check_textures_colors(data);
+	system("leaks cub3D");
 	fill_map(data);
 	printf ("mzyan\n");
 	ft_lstclear(&data->file_content, &del);
