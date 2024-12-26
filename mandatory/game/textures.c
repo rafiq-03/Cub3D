@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 13:39:51 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:57:56 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ void	projection_3D(t_data *data)// render walls
 		angle += RAY_ANGLE_INC;
 		i++;
 	}
+	free (data->rays);
 }
