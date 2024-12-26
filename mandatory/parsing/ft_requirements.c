@@ -6,16 +6,12 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 13:22:29 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:35:05 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	del(void *content)
-{
-	free(content);
-}
 void	check_args(int ac, char *str)
 {
 	if (ac != 2)
@@ -32,7 +28,7 @@ void	check_args(int ac, char *str)
 
 void	fill_file_content(t_data *data, int fd)
 {
-	char *line;
+	char	*line;
 	int		i;
 	t_list	*tmp;
 
@@ -46,66 +42,70 @@ void	fill_file_content(t_data *data, int fd)
 		ft_lstadd_back(&data->file_content, tmp);
 		free(line);
 		line = get_next_line(fd);
-		// printf("%s\n", tmp->content);
 	}
 	close(fd);
 }
 
-void check_textures_colors(t_data *data)
+void	check_color_teture(t_data *data, char *line)
 {
-	t_list *tmp;
-	char **split;
-	char *line;
+	char	**split;
 	int		words;
 
-	tmp = data->file_content;
-	clean_textures(&data->textures);
-	data->colors.flag = 0;
+	split = ft_split_ws(line, " ", &words);
+	if (words == 2)
+	{
+		if (texture_color(split[0]) == 1)
+			fill_textures(data, split);
+		else if (texture_color(split[0]) == 2)
+			fill_colors(data, line);
+		else
+		{
+			ft_strerr("invalid texture or color");
+			exit (EXIT_FAILURE);
+		}
+	}
+	else if (words > 2 && texture_color(split[0]) == 2)
+		fill_colors(data, line);
+	else
+	{
+		ft_strerr("ivalid texture or color");
+		exit(EXIT_FAILURE);
+	}
+	ft_free (split);
+}
+
+void	fill_textures_colors(t_data *data, t_list *tmp)
+{
+	char	*line;
+
 	while (tmp)
 	{
 		if (data->textures.flag == 4 && data->colors.flag == 3)
 		{
 			data->header_end = tmp->i;
-			break;	
+			break ;
 		}
 		line = ft_strtrim(tmp->content, " \n\b\t\r");
-		if (!ft_strlen(line))// skip empty lines
+		if (!ft_strlen(line))
 		{
 			tmp = tmp->next;
 			free (line);
-			continue;
+			continue ;
 		}
-		split = ft_split_ws(line, " ", &words);
-		if (words == 2)
-		{
-			if (texture_color(split[0]) == 1)
-				fill_textures(data, split);
-			else if (texture_color(split[0]) == 2)
-				fill_colors(data, line);
-			else
-			{
-				ft_strerr("invalid texture or color");
-				exit (EXIT_FAILURE);
-			}
-		}
-		else if (words > 2 && texture_color(split[0]) == 2)
-			fill_colors(data, line);
-		else
-		{
-			ft_strerr("ivalid texture or color");
-			exit(EXIT_FAILURE);
-		}
+		check_color_teture(data, line);
 		tmp = tmp->next;
-		ft_free (split);
 		free (line);
 	}
 }
 
 void	check_requirements(int ac, char **av, t_data *data)
 {
-	int fd;
+	int		fd;
+	t_list	*tmp;
 
 	check_args(ac, av[1]);
+	clean_textures(&data->textures);
+	data->colors.flag = 0;
 	fd = open (av[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -118,21 +118,8 @@ void	check_requirements(int ac, char **av, t_data *data)
 		ft_strerr("empty file");
 		exit(EXIT_FAILURE);
 	}
-	check_textures_colors(data);
-	system("leaks cub3D");
+	tmp = data->file_content;
+	fill_textures_colors(data, tmp);
 	fill_map(data);
-	printf ("mzyan\n");
 	ft_lstclear(&data->file_content, &del);
-}
-
-void	print_map(t_data *data)
-{
-	int i = 0;
-	printf("-----------------------------------------------\n");
-	while (data->map.grid[i])
-	{
-		printf("|%s| \n", data->map.grid[i]);
-		i++;
-	}
-	printf("-----------------------------------------------\n");
 }

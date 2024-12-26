@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/25 20:09:01 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:23:16 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	check_color(char *str)
 	ft_free(tmp);
 	return (-1);
 }
-// check_if_they are numbers and store them in an array to put it here      [ ---,---,---  ]
 
 void	add_color(t_data *data, char **r, char **gb)
 {
-	if (check_color(r[1]) != -1 && check_color(gb[1]) != -1 && check_color(gb[2]) != -1)
+	if (check_color(r[1]) != -1
+		&& check_color(gb[1]) != -1 && check_color(gb[2]) != -1)
 	{
 		if (!ft_strcmp(r[0], "F"))
 		{
@@ -64,14 +64,14 @@ void	add_color(t_data *data, char **r, char **gb)
 		}
 		else if (!ft_strcmp(r[0], "C"))
 		{
-			// printf("Ceiling scheme color\n");
 			data->colors.C.r = ft_atoi(r[1]);
 			data->colors.C.g = ft_atoi(gb[1]);
 			data->colors.C.b = ft_atoi(gb[2]);
 			data->colors.flag++;
-		}		
+		}
 	}
 }
+
 int	n_chars(char *str, char c)
 {
 	int	num;
@@ -90,8 +90,8 @@ int	n_chars(char *str, char c)
 
 void	fill_colors(t_data *data, char *line)
 {
-	char **split_1;
-	char **split_2;
+	char	**split_1;
+	char	**split_2;
 	int		words;
 
 	if (n_chars(line, ',') != 2)
@@ -109,6 +109,3 @@ void	fill_colors(t_data *data, char *line)
 	}
 	ft_free(split_1);
 }
-	// printf("F == [%d][%d][%d]\n", data->colors.F.r, data->colors.F.g, data->colors.F.b);
-	// printf("C == [%d][%d][%d]\n", data->colors.C.r, data->colors.C.g, data->colors.C.b);
-
