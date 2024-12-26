@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:58:20 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:47:33 by mskhairi         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:29:26 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,4 +147,5 @@ void cast_rays(t_data *data)
 		angle += RAY_ANGLE_INC;
 		i++;
 	}
+	free (data->rays);
 }
