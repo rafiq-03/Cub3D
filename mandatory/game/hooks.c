@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:06:49 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 14:09:15 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:14:28 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,11 @@ void	key_hooks(t_data *data)
 	next = data->player.coor;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 	{
-		data->player.angle = ft_normalizer(data->player.angle
-				+ data->rotate_angle);
+		data->player.angle = ft_normalizer(data->player.angle + DEGREE);
 	}
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 	{
-		data->player.angle = ft_normalizer(data->player.angle
-				- data->rotate_angle);
+		data->player.angle = ft_normalizer(data->player.angle - DEGREE);
 	}
 	up_down(data, &next);
 	right_left(data, &next);

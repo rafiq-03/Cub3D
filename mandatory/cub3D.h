@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:02:01 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:36:05 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct s_player
 {
 	t_coor		coor;// coordinates of player with pixels
 	double		angle;// angle of player
-	double		rotate_speed; 
-	double		move_speed; 
+	// double		rotate_speed; 
+	// double		move_speed;
 	
 }	t_player;
 
@@ -94,22 +94,20 @@ typedef struct s_texture
 
 typedef struct s_ray
 {
-	int			color;
+	t_coor		Wall_hit;
 	double		x_texture;
 	double		y_texture;
-	t_coor		Wall_hit;
 	double		distance;
 	double		projection_distance;
 	double		projection_column;
 	double		top;
 	double		bottom;
+	int			color;
 	int			flag;
 }	t_ray;
 
 typedef struct s_data
 {
-	double			rotate_angle;
-	double			tmp_column_height;
 	t_list			*file_content;// content from map's file
 	t_map			map;// struct of infos of map
 	t_texture		textures;// textures from file
@@ -120,15 +118,10 @@ typedef struct s_data
 	mlx_image_t		*ft_3D;// image of 3d vue
 	t_ray			*rays;
 	double			x_projection;
-	mlx_texture_t	*texture_img1;
-	mlx_texture_t	*texture_img2;
-	mlx_texture_t	*texture_img3;
-	mlx_texture_t	*texture_img4;
 	mlx_image_t		*img1;
 	mlx_image_t		*img2;
 	mlx_image_t		*img3;
 	mlx_image_t		*img4;
-	double			first_player_angle;
 }	t_data;
 
 /*------------------------[ prototypes ]-------------------------------*/

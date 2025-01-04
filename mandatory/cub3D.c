@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 15:38:42 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:30:09 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	atexit(ll);
+	// atexit(ll);
 	check_requirements(ac, av, &data);
 	init_mlx_elements(&data);
 	mlx_loop_hook(data.mlx, ft_loop, &data);
