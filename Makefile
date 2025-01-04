@@ -6,12 +6,12 @@
 #    By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2024/12/26 16:52:15 by rmarzouk         ###   ########.fr        #
+#    Updated: 2025/01/04 15:35:24 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 
+CFLAGS = -Wall -Wextra -Werror -O3 -fsanitize=address
 MLX_FALGS=utils/MLX42/build/libmlx42.a utils/MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L utils/libft -lft
@@ -32,11 +32,11 @@ O_PARSING = $(S_PARSING:.c=.o)
 
 GAME_DIR = mandatory/game/
 S_GAME= $(addprefix $(GAME_DIR), 			init_mlx.c\
-											render.c \
+											cast_render.c \
 											hooks.c \
 											textures.c \
 											utils.c\
-											raycasting.c\
+											cast_utils.c\
 											map.c\
 								)
 

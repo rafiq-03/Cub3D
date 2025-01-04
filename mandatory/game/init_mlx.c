@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:19:00 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:02:16 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	init_mlx_imgs(t_data *data)
 	data->texture_img2 = mlx_load_png(data->textures.SO);
 	data->texture_img3 = mlx_load_png(data->textures.EA);
 	data->texture_img4 = mlx_load_png(data->textures.WE);
-	if (!data->texture_img1 || !data->texture_img2 || !data->texture_img3 || !data->texture_img4)
+	if (!data->texture_img1 || !data->texture_img2
+		|| !data->texture_img3 || !data->texture_img4)
 	{
 		printf("Load_png Error!\n");
 		exit(EXIT_FAILURE);

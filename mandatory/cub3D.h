@@ -3,49 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/19 18:22:16 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:02:01 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-#define CUBE3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 /*------------------------[ includes ]----------------------------------*/
 
-#include <unistd.h>//
-#include <stdio.h> // for testing
-#include <fcntl.h>
-#include <math.h>
-#include "../utils/MLX42/include/MLX42/MLX42.h"
-#include "../utils/libft/libft.h"
+# include <unistd.h>//
+# include <stdio.h> // for testing
+# include <fcntl.h>
+# include <math.h>
+# include "../utils/MLX42/include/MLX42/MLX42.h"
+# include "../utils/libft/libft.h"
 
-#define TILE_SIZE  24
-#define MINI_HEIGHT TILE_SIZE * 10
-#define MINI_WIDTH  TILE_SIZE * 20
+# define TILE_SIZE  24
+# define MINI_HEIGHT TILE_SIZE * 10
+# define MINI_WIDTH  TILE_SIZE * 20
 
-#define DEGREE_0 0.0
-#define DEGREE_90 90 * M_PI / 180
-#define DEGREE_60 60 * M_PI / 180
-#define DEGREE_180 M_PI
-#define DEGREE_270 270 * M_PI / 180
+# define DEGREE_0 0.0
+# define DEGREE_90 90 * M_PI / 180
+# define DEGREE_60 60 * M_PI / 180
+# define DEGREE_180 M_PI
+# define DEGREE_270 270 * M_PI / 180
 
-#define WIDTH 1600
-#define HEIGHT 1000
+# define WIDTH 1600
+# define HEIGHT 1000
 
-#define RAD M_PI / 180 // one radian
-#define DEGREE 2 * M_PI / 180
-#define	SPEED 2
-// #define RES 
+# define RAD M_PI / 180 // one radian
+# define DEGREE 2 * M_PI / 180
+# define SPEED 2
 
-#define N_RAYS 1600
+# define N_RAYS 1600
 
-#define FOV DEGREE_60
+# define FOV DEGREE_60
 
-#define RAY_ANGLE_INC FOV / N_RAYS
-
+# define RAY_ANGLE_INC FOV / N_RAYS
 
 /*------------------------[ structs ]----------------------------------*/
 
@@ -53,7 +51,6 @@ typedef struct s_coor
 {
 	double	x;
 	double	y;
-	
 }	t_coor;
 
 typedef struct s_player
@@ -93,61 +90,60 @@ typedef struct s_texture
 	char		*EA;
 	char		*WE;
 	u_int16_t	flag;
-} t_texture;
+}	t_texture;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
-	int         color;
-	double      x_texture;
-	double      y_texture;
+	int			color;
+	double		x_texture;
+	double		y_texture;
 	t_coor		Wall_hit;
-    double		distance;
-    double	    projection_distance;
-    double      projection_column;
-	double      top;
-	double      bottom;
-	int         flag;
+	double		distance;
+	double		projection_distance;
+	double		projection_column;
+	double		top;
+	double		bottom;
+	int			flag;
 }	t_ray;
 
 typedef struct s_data
 {
-    double      rotate_angle;
-    double      tmp_column_height;
-	t_list		*file_content;// content from map's file
-	t_map		map;// struct of infos of map
-	t_texture	textures;// textures from file
-	t_color		colors;// colors from file
-	int		 	header_end; // when I finish to extract colors and colors i pust this flag to it
-	t_player	player; // player information
-	mlx_t		*mlx;// mlx variable
-	mlx_image_t	*ft_3D;// image of 3d vue
-	t_ray		*rays;
-	double  x_projection;
-	mlx_texture_t *texture_img1;
-	mlx_texture_t *texture_img2;
-	mlx_texture_t *texture_img3;
-	mlx_texture_t *texture_img4;
-	mlx_image_t *img1;
-	mlx_image_t *img2;
-	mlx_image_t *img3;
-	mlx_image_t *img4;
-	double first_player_angle;
+	double			rotate_angle;
+	double			tmp_column_height;
+	t_list			*file_content;// content from map's file
+	t_map			map;// struct of infos of map
+	t_texture		textures;// textures from file
+	t_color			colors;// colors from file
+	int				header_end;
+	t_player		player; // player information
+	mlx_t			*mlx;// mlx variable
+	mlx_image_t		*ft_3D;// image of 3d vue
+	t_ray			*rays;
+	double			x_projection;
+	mlx_texture_t	*texture_img1;
+	mlx_texture_t	*texture_img2;
+	mlx_texture_t	*texture_img3;
+	mlx_texture_t	*texture_img4;
+	mlx_image_t		*img1;
+	mlx_image_t		*img2;
+	mlx_image_t		*img3;
+	mlx_image_t		*img4;
+	double			first_player_angle;
 }	t_data;
-
-
 
 /*------------------------[ prototypes ]-------------------------------*/
 
 /*--[ :: parsing :: ]--*/
 
 void	check_requirements(int ac, char **av, t_data *data);
+void	init_mlx_elements(t_data *data);
 
 /*--[ :: game :: ]--*/
 
 void	key_hooks(t_data *data);
-void	render_all(t_data *data);
-void	cast_rays(t_data *data);
+void	cast_render(t_data *data);
 
-void	ft_loop(void *dataa);// loop hook
+void	ft_loop(void *dataa);
+void	clean_all(t_data *data);
 
 #endif

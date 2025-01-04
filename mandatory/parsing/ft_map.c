@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:25:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 16:41:16 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:25:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	_loop(t_data *data, t_list *tmp, int i)
 			exit(EXIT_FAILURE);
 		}
 		if (!ft_strlen(tmp->content)) 
-		// if there is an empty  line check if there is something after it
 		{
 			after_map(tmp);
 			break ;

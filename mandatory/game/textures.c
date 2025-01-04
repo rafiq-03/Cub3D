@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 16:57:56 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:49:59 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
 		ray->x_texture = (ray->Wall_hit.y / TILE_SIZE - floor(ray->Wall_hit.y / TILE_SIZE)) * img->width;
 	put_textures(data, ray, img, flag);
 }
+
 void	draw_columns(t_data *data, t_ray *ray, double angle)
 {
 	ray->distance *= cos(data->player.angle - angle);
@@ -61,22 +62,4 @@ void	draw_columns(t_data *data, t_ray *ray, double angle)
 		textures(data, ray, data->img3, 1);
 	if (cos(angle) <= 0  && ray->flag == 'v')// ----->left
 		textures(data, ray, data->img4, 0);
-}
-
-void	projection_3D(t_data *data)// render walls
-{
-	double angle;
-	int i;
-	
-	angle = data->player.angle - FOV / 2;
-	i = 0;
-	data->x_projection = 0;
-	while (i < N_RAYS)// casting rays depened of player angle
-	{
-		draw_columns(data, &data->rays[i], angle);
-		data->x_projection++;
-		angle += RAY_ANGLE_INC;
-		i++;
-	}
-	free (data->rays);
 }
