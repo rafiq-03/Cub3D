@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:31:30 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:28:32 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:44:03 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	init_mlx_imgs(t_data *data)
 	mlx_texture_t	*texture_img3;
 	mlx_texture_t	*texture_img4;
 
-	texture_img1 = mlx_load_png(data->textures.NO);
-	texture_img2 = mlx_load_png(data->textures.SO);
-	texture_img3 = mlx_load_png(data->textures.EA);
-	texture_img4 = mlx_load_png(data->textures.WE);
+	texture_img1 = mlx_load_png(data->textures.no);
+	texture_img2 = mlx_load_png(data->textures.so);
+	texture_img3 = mlx_load_png(data->textures.ea);
+	texture_img4 = mlx_load_png(data->textures.we);
 	if (!texture_img1 || !texture_img2
 		|| !texture_img3 || !texture_img4)
 	{
@@ -53,13 +53,13 @@ void	init_mlx_elements(t_data *data)
 		ft_strerr("failed to create mlx pointer");
 		return ;
 	}
-	data->ft_3D = mlx_new_image(data->mlx, WIDTH , HEIGHT);
-	if (!data->ft_3D)
+	data->ft_3d = mlx_new_image(data->mlx, WIDTH , HEIGHT);
+	if (!data->ft_3d)
 	{
 		ft_strerr("3d vue's image error");
 		exit(EXIT_FAILURE);
 	}
-	mlx_image_to_window(data->mlx, data->ft_3D, 0 , 0);
+	mlx_image_to_window(data->mlx, data->ft_3d, 0 , 0);
 	init_mlx_imgs(data);
 	// must delete textures
 }

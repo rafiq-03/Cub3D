@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:11:02 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:44:16 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	render_background(t_data *data)
 		while (j < WIDTH)
 		{
 			if (i < HEIGHT / 2)
-				mlx_put_pixel(data->ft_3D, j, i, get_rgba(data->colors.C.r,
-						data->colors.C.g, data->colors.C.b, 255));
+				mlx_put_pixel(data->ft_3d, j, i, get_rgba(data->colors.c.r,
+						data->colors.c.g, data->colors.c.b, 255));
 			else
-				mlx_put_pixel(data->ft_3D, j, i, get_rgba(data->colors.F.r,
-						data->colors.F.g, data->colors.F.b, 255));
+				mlx_put_pixel(data->ft_3d, j, i, get_rgba(data->colors.f.r,
+						data->colors.f.g, data->colors.f.b, 255));
 			j++;
 		}
 		i++;

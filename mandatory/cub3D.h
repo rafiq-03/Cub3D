@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:36:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:43:47 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ typedef	struct s_rgb
 
 typedef struct s_color
 {
-	t_rgb		F;
-	t_rgb		C;
+	t_rgb		f;
+	t_rgb		c;
 	u_int16_t	flag;
 } t_color;
 
 typedef struct s_texture
 {
-	char		*NO;
-	char		*SO;
-	char		*EA;
-	char		*WE;
+	char		*no;
+	char		*so;
+	char		*ea;
+	char		*we;
 	u_int16_t	flag;
 }	t_texture;
 
@@ -115,7 +115,7 @@ typedef struct s_data
 	int				header_end;
 	t_player		player; // player information
 	mlx_t			*mlx;// mlx variable
-	mlx_image_t		*ft_3D;// image of 3d vue
+	mlx_image_t		*ft_3d;// image of 3d vue
 	t_ray			*rays;
 	double			x_projection;
 	mlx_image_t		*img1;

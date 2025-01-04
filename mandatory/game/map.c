@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:26:27 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 15:34:55 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:44:38 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void mini_map(t_data *data)
 			if (x >= 0 && x < (data->map.width * TILE_SIZE) && y >= 0 && y < (data->map.heigth * TILE_SIZE))
 			{
 				if (data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '1')
-					my_mlx_put_pixel(data, data->ft_3D, (t_coor){i , j}, get_rgba(0, 0, 0, 255));
+					my_mlx_put_pixel(data, data->ft_3d, (t_coor){i , j}, get_rgba(0, 0, 0, 255));
 				if (data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '0'
 				|| ft_strchr("NSEW", data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)]))
-					my_mlx_put_pixel(data, data->ft_3D, (t_coor){i , j}, get_rgba(246, 230, 203, 255));
+					my_mlx_put_pixel(data, data->ft_3d, (t_coor){i , j}, get_rgba(246, 230, 203, 255));
 			}
 			x++;
 			i++;
@@ -59,5 +59,5 @@ void mini_map(t_data *data)
 		y++;
 		j++;
 	}
-	draw_player(data, (t_coor){10 * TILE_SIZE, 5 * TILE_SIZE}, data->ft_3D);
+	draw_player(data, (t_coor){10 * TILE_SIZE, 5 * TILE_SIZE}, data->ft_3d);
 }

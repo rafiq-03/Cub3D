@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 15:23:16 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:42:34 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ void	add_color(t_data *data, char **r, char **gb)
 	{
 		if (!ft_strcmp(r[0], "F"))
 		{
-			data->colors.F.r = ft_atoi(r[1]);
-			data->colors.F.g = ft_atoi(gb[1]);
-			data->colors.F.b = ft_atoi(gb[2]);
+			data->colors.f.r = ft_atoi(r[1]);
+			data->colors.f.g = ft_atoi(gb[1]);
+			data->colors.f.b = ft_atoi(gb[2]);
 			data->colors.flag += 2;
 		}
 		else if (!ft_strcmp(r[0], "C"))
 		{
-			data->colors.C.r = ft_atoi(r[1]);
-			data->colors.C.g = ft_atoi(gb[1]);
-			data->colors.C.b = ft_atoi(gb[2]);
+			data->colors.c.r = ft_atoi(r[1]);
+			data->colors.c.g = ft_atoi(gb[1]);
+			data->colors.c.b = ft_atoi(gb[2]);
 			data->colors.flag++;
 		}
 	}

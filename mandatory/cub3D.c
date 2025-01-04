@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:30:09 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:40:17 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_loop(void *dataa)
 void	clean_all(t_data *data)
 {
 	ft_free(data->map.grid);
-	free(data->textures.NO);
-	free(data->textures.SO);
-	free(data->textures.WE);
-	free(data->textures.EA);
+	free(data->textures.no);
+	free(data->textures.so);
+	free(data->textures.we);
+	free(data->textures.ea);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:25:07 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:44:24 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	put_textures(t_data *data,t_ray *ray, mlx_image_t *img, int flag)
                 else
                     ray->color = gett_rgba(&img->pixels[(((int)ray->y_texture * img->width + (int)ray->x_texture)) * 4]);
                     
-				mlx_put_pixel(data->ft_3D, data->x_projection  , i, ray->color);
+				mlx_put_pixel(data->ft_3d, data->x_projection  , i, ray->color);
 			}
 		}
 		i++;
