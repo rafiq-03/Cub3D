@@ -6,12 +6,12 @@
 #    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2025/01/07 17:08:06 by mskhairi         ###   ########.fr        #
+#    Updated: 2025/01/07 17:46:36 by mskhairi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -O3 #-fsanitize=address
 MLX_FALGS=utils/MLX42/build/libmlx42.a utils/MLX42/build/libglfw3.a
 LIBS = -framework Cocoa -framework OpenGL -framework IOKit
 LIBFT_FLAGS = -L utils/libft -lft
