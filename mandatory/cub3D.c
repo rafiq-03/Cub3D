@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:40:17 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:01:35 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ll(void)
 {
-	// system("leaks -q cub3D | grep \'leaks for\' | awk \'{print $3 ,$4}\'");
+	//system("leaks -q cub3D | grep \'leaks for\' | awk \'{print $3 ,$4}\'");
 	system("leaks -q cub3D");
 }
 
@@ -40,10 +40,11 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	// atexit(ll);
+	/*atexit(ll);*/
 	check_requirements(ac, av, &data);
 	init_mlx_elements(&data);
 	mlx_loop_hook(data.mlx, ft_loop, &data);
 	mlx_loop(data.mlx);
 	clean_all(&data);
+	/*must delete textures*/
 }

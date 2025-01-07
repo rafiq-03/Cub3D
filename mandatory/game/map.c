@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:26:27 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:44:38 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:19:10 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,4 @@ void	draw_player(t_data *data, t_coor coor, mlx_image_t *img)
 		}
 		i++;
 	}
-}
-
-void mini_map(t_data *data)
-{
-	double x;
-	double y;
-
-	int i = 0;
-	int j = 0;
-	y = data->player.coor.y - 5 * TILE_SIZE;
-	while (j < MINI_HEIGHT)
-	{ 
-		x = data->player.coor.x - 10 * TILE_SIZE;
-		i = 0;
-		while (i < MINI_WIDTH)
-		{
-			if (x >= 0 && x < (data->map.width * TILE_SIZE) && y >= 0 && y < (data->map.heigth * TILE_SIZE))
-			{
-				if (data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '1')
-					my_mlx_put_pixel(data, data->ft_3d, (t_coor){i , j}, get_rgba(0, 0, 0, 255));
-				if (data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '0'
-				|| ft_strchr("NSEW", data->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)]))
-					my_mlx_put_pixel(data, data->ft_3d, (t_coor){i , j}, get_rgba(246, 230, 203, 255));
-			}
-			x++;
-			i++;
-		}
-		y++;
-		j++;
-	}
-	draw_player(data, (t_coor){10 * TILE_SIZE, 5 * TILE_SIZE}, data->ft_3d);
 }

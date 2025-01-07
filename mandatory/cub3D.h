@@ -3,49 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:43:47 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:16:00 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-/*------------------------[ includes ]----------------------------------*/
-
-# include <unistd.h>//
-# include <stdio.h> // for testing
+# include <unistd.h>
+# include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
 # include "../utils/MLX42/include/MLX42/MLX42.h"
 # include "../utils/libft/libft.h"
-
-# define TILE_SIZE  24
-# define MINI_HEIGHT TILE_SIZE * 10
-# define MINI_WIDTH  TILE_SIZE * 20
-
+# define TILE_SIZE  32
+# define MINI_HEIGHT 240
+# define MINI_WIDTH  480
 # define DEGREE_0 0.0
-# define DEGREE_90 90 * M_PI / 180
-# define DEGREE_60 60 * M_PI / 180
+# define DEGREE_90 1.5707963268
+# define DEGREE_60 1.0471975512
 # define DEGREE_180 M_PI
-# define DEGREE_270 270 * M_PI / 180
-
+# define DEGREE_270 4.7123889804
 # define WIDTH 1600
 # define HEIGHT 1000
 
-# define RAD M_PI / 180 // one radian
-# define DEGREE 2 * M_PI / 180
+# define RAD 0.0174532925
+# define DEGREE 0.034906585
 # define SPEED 2
 
 # define N_RAYS 1600
 
-# define FOV DEGREE_60
+# define FOV 1.0471975512
 
-# define RAY_ANGLE_INC FOV / N_RAYS
-
-/*------------------------[ structs ]----------------------------------*/
+# define RAY_ANGLE_INC 0.0006544985
 
 typedef struct s_coor
 {
@@ -55,33 +48,30 @@ typedef struct s_coor
 
 typedef struct s_player
 {
-	t_coor		coor;// coordinates of player with pixels
-	double		angle;// angle of player
-	// double		rotate_speed; 
-	// double		move_speed;
-	
+	t_coor		coor;
+	double		angle;
 }	t_player;
 
 typedef struct s_map
 {
 	char	**grid;
-	int		width; // width of map
-	int		heigth;// height of map
+	int		width;
+	int		heigth;
 }	t_map;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	int	r;
 	int	g;
 	int	b;
-} t_rgb;
+}	t_rgb;
 
 typedef struct s_color
 {
 	t_rgb		f;
 	t_rgb		c;
 	u_int16_t	flag;
-} t_color;
+}	t_color;
 
 typedef struct s_texture
 {
@@ -94,7 +84,7 @@ typedef struct s_texture
 
 typedef struct s_ray
 {
-	t_coor		Wall_hit;
+	t_coor		wall_hit;
 	double		x_texture;
 	double		y_texture;
 	double		distance;
@@ -108,30 +98,28 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	t_list			*file_content;// content from map's file
-	t_map			map;// struct of infos of map
-	t_texture		textures;// textures from file
-	t_color			colors;// colors from file
-	int				header_end;
-	t_player		player; // player information
-	mlx_t			*mlx;// mlx variable
-	mlx_image_t		*ft_3d;// image of 3d vue
-	t_ray			*rays;
-	double			x_projection;
-	mlx_image_t		*img1;
-	mlx_image_t		*img2;
-	mlx_image_t		*img3;
-	mlx_image_t		*img4;
+	t_list				*file_content;
+	t_map				map;
+	t_texture			textures;
+	t_color				colors;
+	int					header_end;
+	t_player			player;
+	mlx_t				*mlx;
+	mlx_image_t			*ft_3d;
+	t_ray				*rays;
+	double				x_projection;
+	mlx_texture_t		*texture1;
+	mlx_texture_t		*texture2;
+	mlx_texture_t		*texture3;
+	mlx_texture_t		*texture4;
+	mlx_image_t			*img1;
+	mlx_image_t			*img2;
+	mlx_image_t			*img3;
+	mlx_image_t			*img4;
 }	t_data;
-
-/*------------------------[ prototypes ]-------------------------------*/
-
-/*--[ :: parsing :: ]--*/
 
 void	check_requirements(int ac, char **av, t_data *data);
 void	init_mlx_elements(t_data *data);
-
-/*--[ :: game :: ]--*/
 
 void	key_hooks(t_data *data);
 void	cast_render(t_data *data);

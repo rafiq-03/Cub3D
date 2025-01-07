@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
+/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:44:16 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:41:24 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	cast_ray(t_data *data, double angle, int i)
 	hit_v = first_v_inter(angle, data->player.coor);
 	hit_h = wall_detect(data->map, hit_h, angle, 'h');
 	hit_v = wall_detect(data->map, hit_v, angle, 'v');
-	data->rays[i].Wall_hit = ft_compare(data->player.coor,
+	data->rays[i].wall_hit = ft_compare(data->player.coor,
 			hit_h, hit_v, &(data->rays[i]));
 }
 
