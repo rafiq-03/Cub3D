@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast_render.c                                      :+:      :+:    :+:   */
+/*   cast_render_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:34:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 16:21:49 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:02:12 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "game_bonus.h"
 
 void	render_background(t_data *data)
 {
@@ -49,8 +49,8 @@ t_coor	wall_detect(t_map map, t_coor first, double angle, char flag)
 	{
 		x = (int)(hit.x / TILE_SIZE);
 		y = (int)((hit.y) / TILE_SIZE);
-		if (x >= 0 && y >= 0 && x < map.width
-			&& y < map.heigth && map.grid[y][x] == '1')
+		if (x >= 0 && y >= 0 && x < map.width && y < map.heigth
+			&& map.grid[y][x] == '1')
 			return (hit);
 		if (flag == 'h')
 			ft_horizontal(&hit, angle);
@@ -94,5 +94,6 @@ void	cast_render(t_data *data)
 		angle += RAY_ANGLE_INC;
 		i++;
 	}
-	free (data->rays);
+	mini_map(data);
+	free(data->rays);
 }

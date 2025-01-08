@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   game_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 13:31:46 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 17:05:23 by mskhairi         ###   ########.fr       */
+/*   Created: 2025/01/08 17:05:54 by mskhairi          #+#    #+#             */
+/*   Updated: 2025/01/08 17:08:53 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef GAME_BONUS_H
+# define GAME_BONUS_H
 
-# include "../cub3D.h"
+# include "../cub3D_bonus.h"
 
 void	init_mlx_elements(t_data *data);
 void	my_mlx_put_pixel(t_data *data, mlx_image_t *img,
@@ -33,5 +33,6 @@ t_coor	ft_compare(t_coor player, t_coor h, t_coor v, t_ray *ray);
 
 void	draw_columns(t_data *data, t_ray *ray, double angle);
 void	render_background(t_data *data);
+void	mini_map(t_data *data);
 
 #endif

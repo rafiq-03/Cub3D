@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "bonus",
+			"path": "../../Cub3D_mandatory_Bpushing/bonus"
+		},
+		{
+			"name": "last_cub3d",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

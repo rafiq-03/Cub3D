@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:16:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 16:21:49 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:24:16 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "game_bonus.h"
 
 void	getcolor_from_texture(t_ray **ray, mlx_texture_t *texture, int flag)
 {

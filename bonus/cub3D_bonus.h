@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 16:21:49 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:18:22 by mskhairi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <unistd.h>
 # include <stdio.h>
@@ -45,6 +45,13 @@ typedef struct s_coor
 	double	x;
 	double	y;
 }	t_coor;
+
+typedef struct s_mouse
+{
+	int	x;
+	int	y;
+	
+}	t_mouse;
 
 typedef struct s_player
 {
@@ -116,6 +123,8 @@ typedef struct s_data
 	mlx_image_t			*img2;
 	mlx_image_t			*img3;
 	mlx_image_t			*img4;
+	int					tmp_mouse;
+	t_mouse				mouse_p;
 }	t_data;
 
 void	check_requirements(int ac, char **av, t_data *data);
