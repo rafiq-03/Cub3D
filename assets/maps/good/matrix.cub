@@ -1,10 +1,10 @@
-NO textures/matrix.xpm
-SO textures/matrix.xpm
-WE textures/matrix.xpm
-EA textures/matrix.xpm
+NO ../2.png
+SO ../2.png
+WE ../2.png
+EA ../2.png
 
 F 0,0,0
-C 0,0,0
+C 255,255,11
 
 111111111111111111111
 101000001000000000001

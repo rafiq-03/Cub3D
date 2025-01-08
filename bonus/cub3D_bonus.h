@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 19:13:13 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:39:54 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # include "../utils/MLX42/include/MLX42/MLX42.h"
 # include "../utils/libft/libft.h"
 # define TILE_SIZE  32
-# define MINI_HEIGHT 240
-# define MINI_WIDTH  480
+# define MINI_HEIGHT 320
 # define DEGREE_0 0.0
 # define DEGREE_90 1.5707963268
 # define DEGREE_60 1.0471975512

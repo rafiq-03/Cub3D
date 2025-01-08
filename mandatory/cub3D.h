@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:40 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 16:21:49 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:13:00 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include "../utils/MLX42/include/MLX42/MLX42.h"
 # include "../utils/libft/libft.h"
 # define TILE_SIZE  32
-# define MINI_HEIGHT 240
-# define MINI_WIDTH  480
 # define DEGREE_0 0.0
 # define DEGREE_90 1.5707963268
 # define DEGREE_60 1.0471975512

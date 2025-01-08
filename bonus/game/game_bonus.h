@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:05:54 by mskhairi          #+#    #+#             */
-/*   Updated: 2025/01/08 17:08:53 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:54:17 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_mlx_elements(t_data *data);
 void	my_mlx_put_pixel(t_data *data, mlx_image_t *img,
 			t_coor coor, u_int32_t color);
 int		get_rgba(int r, int g, int b, int a);
-void	draw_player(t_data *data, t_coor coor, mlx_image_t *img);
+void	draw_player(t_data *data, t_coor coor);
 
 double	ft_normalizer(double angle);
 int		gett_rgba(uint8_t *color);
