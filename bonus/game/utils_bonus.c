@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:29:37 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 16:06:07 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:12:55 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,4 @@ double	ft_normalizer(double angle)
 int	gett_rgba(uint8_t *color)
 {
 	return (color[0] << 24 | color[1] << 16 | color[2] << 8 | color[3]);
-}
-
-void	dda(t_data *data, t_coor a, t_coor b, int color, mlx_image_t *img)
-{
-	int		step;
-	double	dx;
-	double	dy;
-	double	xinc;
-	double	yinc;
-	int		i;
-
-	dy = b.y - a.y;
-	dx = b.x - a.x;
-	if (fabs(dx) > fabs(dy))
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	xinc = dx / step;
-	yinc = dy / step;
-	i = 0;
-	while (i <= step)
-	{
-		my_mlx_put_pixel(data, img, (t_coor){a.x, a.y}, color);
-		a.x += xinc;
-		a.y += yinc;
-		i++;
-	}
 }
