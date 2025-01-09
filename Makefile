@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2025/01/08 16:03:01 by mskhairi         ###   ########.fr        #
+#    Updated: 2025/01/09 13:42:04 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ S_GAME= $(addprefix $(GAME_DIR), 			init_mlx.c\
 											textures.c \
 											utils.c\
 											cast_utils.c\
-											map.c\
 								)
 S_GAME_B= $(addprefix $(GAME_DIR_B), 			init_mlx_bonus.c\
 											cast_render_bonus.c \

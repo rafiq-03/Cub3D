@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:25:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 15:25:03 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:45:56 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ void	_loop(t_data *data, t_list *tmp, int i)
 	}
 }
 
+void	check_limits(t_data *data)
+{
+	if (data->map.heigth > 1000 || data->map.width > 1000)
+	{
+		ft_strerr("map is too big");
+		exit(EXIT_FAILURE);
+	}
+}
+
 void	fill_map(t_data *data)
 {
 	t_list	*tmp;
@@ -64,6 +73,7 @@ void	fill_map(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	data->map.width = ft_max_len(tmp);
+	check_limits(data);	
 	data->map.grid = ft_calloc(data->map.heigth + 1, sizeof(char *));
 	if (!data->map.grid)
 		return ;
