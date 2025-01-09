@@ -6,7 +6,7 @@
 #    By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:54:37 by rmarzouk          #+#    #+#              #
-#    Updated: 2025/01/09 13:42:04 by rmarzouk         ###   ########.fr        #
+#    Updated: 2025/01/09 17:54:21 by rmarzouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,10 +66,12 @@ $(NAME): mandatory/$(NAME).o $(O_PARSING) $(O_GAME)
 	make -C utils/libft
 	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) mandatory/$(NAME).o $(O_GAME) $(O_PARSING) -o $(NAME)
 
-%.o:%.c mandatory/$(NAME).h bonus/$(NAME).h
+%.o:%.c mandatory/$(NAME).h bonus/$(NAME_B).h
 	$(CC) -c $(CFLAGS) $< -o $@
 
-bonus: bonus/$(NAME_B).o $(O_PARSING_B) $(O_GAME_B)
+bonus: $(NAME_B)
+		
+$(NAME_B): bonus/$(NAME_B).o $(O_PARSING_B) $(O_GAME_B)
 	make -C utils/libft
 	$(CC) $(CFLAGS) $(MLX_FALGS) $(LIBS) $(LIBFT_FLAGS) bonus/$(NAME_B).o $(O_GAME_B) $(O_PARSING_B) -o $(NAME_B)
 clean:
