@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:19:55 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:33:14 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:43:30 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	ft_free(char **str)
 
 	i = 0;
 	while (str[i])
-		free(str[i++]);
+	{
+		free(str[i]);
+		str[i++] = NULL;
+	}
 	free(str);
+	str = NULL;
 }
