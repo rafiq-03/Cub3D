@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 16:35:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:22:13 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	fill_file_content(t_data *data, int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		tmp = ft_lstnew(ft_strtrim(line, "\n\t"));
+		tmp = ft_lstnew(ft_strtrim(line, "\n"));
 		tmp->i = i++;
 		ft_lstadd_back(&data->file_content, tmp);
 		free(line);
@@ -51,7 +51,7 @@ void	check_color_teture(t_data *data, char *line)
 	char	**split;
 	int		words;
 
-	split = ft_split_ws(line, " ", &words);
+	split = ft_split_ws(line, " \t", &words);
 	if (words == 2)
 	{
 		if (texture_color(split[0]) == 1)
