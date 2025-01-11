@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:16:33 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/04 16:42:34 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:37:31 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int	is_number(char *str)
 
 	i = 0;
 	if (str[i] == '+')
+	{
 		i++;
+		if (!str[i])
+			return (0);
+	}
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
