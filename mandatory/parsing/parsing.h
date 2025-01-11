@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:21:24 by rmarzouk          #+#    #+#             */
-/*   Updated: 2024/12/26 16:55:05 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 18:27:56 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fill_textures_colors(t_data *data, t_list *tmp);
 
 void	add_texture(char **texture, char *line, u_int16_t *flag);
 void	clean_textures(t_texture *textures);
-void	fill_textures(t_data *data, char **split);
+void	fill_textures(t_data *data, char **split, char *line);
 int		texture_color(char *s);
 
 /*----[ - ft_colors : ]--------------------------------------------*/
