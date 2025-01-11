@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:54:43 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/11 14:30:20 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:24:13 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	clean_all(t_data *data)
 	free(data->textures.so);
 	free(data->textures.we);
 	free(data->textures.ea);
+	mlx_delete_texture(data->texture1);
+	mlx_delete_texture(data->texture2);
+	mlx_delete_texture(data->texture3);
+	mlx_delete_texture(data->texture4);
 }
 
 int	main(int ac, char **av)
