@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_textures_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mskhairi <mskhairi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 13:36:59 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/08 17:20:36 by mskhairi         ###   ########.fr       */
+/*   Updated: 2025/01/11 18:41:06 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	add_texture(char **texture, char *line, u_int16_t *flag)
 {
+	char	*tmp;
+
+	tmp = ft_strtrim(line, "\t ");
 	if (*texture)
 	{
 		ft_strerr("duplicate texture");
+		free(tmp);
 		exit (EXIT_FAILURE);
 	}
-	*texture = ft_strdup(line);
+	*texture = ft_strdup(tmp);
+	free(tmp);
 	(*flag)++;
 }
 
@@ -42,14 +47,14 @@ int	texture_color(char *s)
 	return (0);
 }
 
-void	fill_textures(t_data *data, char **split)
+void	fill_textures(t_data *data, char **split, char *line)
 {
 	if (!ft_strcmp(split[0], "SO"))
-		add_texture(&data->textures.so, split[1], &data->textures.flag);
+		add_texture(&data->textures.so, line + 2, &data->textures.flag);
 	else if (!ft_strcmp(split[0], "NO"))
-		add_texture(&data->textures.no, split[1], &data->textures.flag);
+		add_texture(&data->textures.no, line + 2, &data->textures.flag);
 	else if (!ft_strcmp(split[0], "WE"))
-		add_texture(&data->textures.we, split[1], &data->textures.flag);
+		add_texture(&data->textures.we, line + 2, &data->textures.flag);
 	else if (!ft_strcmp(split[0], "EA"))
-		add_texture(&data->textures.ea, split[1], &data->textures.flag);
+		add_texture(&data->textures.ea, line + 2, &data->textures.flag);
 }

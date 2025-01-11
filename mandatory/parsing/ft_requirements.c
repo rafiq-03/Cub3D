@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:06:10 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/11 16:22:13 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 18:27:41 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,9 @@ void	check_color_teture(t_data *data, char *line)
 	int		words;
 
 	split = ft_split_ws(line, " \t", &words);
-	if (words == 2)
-	{
-		if (texture_color(split[0]) == 1)
-			fill_textures(data, split);
-		else if (texture_color(split[0]) == 2)
-			fill_colors(data, line);
-		else
-		{
-			ft_strerr("invalid texture or color");
-			exit (EXIT_FAILURE);
-		}
-	}
-	else if (words > 2 && texture_color(split[0]) == 2)
+	if (texture_color(split[0]) == 1)
+		fill_textures(data, split, line);
+	else if (texture_color(split[0]) == 2)
 		fill_colors(data, line);
 	else
 	{
