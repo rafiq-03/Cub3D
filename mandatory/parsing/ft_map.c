@@ -6,7 +6,7 @@
 /*   By: rmarzouk <rmarzouk@student.1337.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:25:44 by rmarzouk          #+#    #+#             */
-/*   Updated: 2025/01/09 13:45:56 by rmarzouk         ###   ########.fr       */
+/*   Updated: 2025/01/11 14:29:21 by rmarzouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	fill_map(t_data *data)
 		exit(EXIT_FAILURE);
 	}
 	data->map.width = ft_max_len(tmp);
-	check_limits(data);	
+	check_limits(data);
 	data->map.grid = ft_calloc(data->map.heigth + 1, sizeof(char *));
 	if (!data->map.grid)
 		return ;
